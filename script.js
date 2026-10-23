@@ -3218,7 +3218,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     try {
 
         const response =
-            await fetch("../data/sentinel_data.json");
+            await fetch("/data/sentinel_data.json");
 
         if (!response.ok) {
             throw new Error(
