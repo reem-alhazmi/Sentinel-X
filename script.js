@@ -4868,7 +4868,7 @@ async function loadSentinelDataset() {
     try {
 
         const response =
-            await fetch("../data/sentinel_data.json");
+            await fetch("data/sentinel_data.json");
 
         if (!response.ok) {
 
@@ -4942,7 +4942,7 @@ async function renderDatasetAlerts() {
 
         const response =
             await fetch(
-                "../data/sentinel_data.json"
+                "data/sentinel_data.json"
             );
 
 
@@ -6208,7 +6208,7 @@ async function renderDatasetIncidents() {
 
         const response =
             await fetch(
-                "../data/sentinel_data.json"
+                "data/sentinel_data.json"
             );
 
 
@@ -7918,7 +7918,7 @@ async function renderDatasetDevices() {
 
         const response =
             await fetch(
-                "../data/sentinel_data.json"
+                "data/sentinel_data.json"
             );
 
 
@@ -8582,7 +8582,7 @@ async function renderDatasetEmployees() {
 
         const response =
             await fetch(
-                "../data/sentinel_data.json"
+                "data/sentinel_data.json"
             );
 
 
@@ -9722,7 +9722,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const response =
             await fetch(
-                "../data/sentinel_data.json"
+                "data/sentinel_data.json"
             );
 
 
