@@ -1,0 +1,592 @@
+/* ========================= */
+/* Alerts Page */
+/* ========================= */
+
+.alerts-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:30px;
+    margin-bottom:30px;
+}
+
+.alerts-header h1{
+    margin-bottom:8px;
+}
+
+
+/* ========================= */
+/* Alert Summary */
+/* ========================= */
+
+.alert-summary{
+    display:flex;
+    gap:12px;
+}
+
+.summary-item{
+    min-width:90px;
+    padding:12px 16px;
+    background:#1e293b;
+    border:1px solid #334155;
+    border-radius:10px;
+    text-align:center;
+}
+
+.summary-item strong{
+    display:block;
+    font-size:20px;
+    margin-bottom:3px;
+}
+
+.summary-item span{
+    color:#94a3b8;
+    font-size:12px;
+}
+
+.high-summary strong{
+    color:#ef4444;
+}
+
+.medium-summary strong{
+    color:#f59e0b;
+}
+
+.low-summary strong{
+    color:#22c55e;
+}
+
+
+/* ========================= */
+/* Alert Toolbar */
+/* ========================= */
+
+.alert-toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:#111827;
+
+    border:1px solid #334155;
+    border-radius:10px;
+
+    padding:14px 18px;
+
+    margin-bottom:18px;
+}
+
+.alert-toolbar-title{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    color:#e2e8f0;
+}
+
+.alert-status-indicator{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    color:#22c55e;
+
+    font-size:13px;
+    font-weight:bold;
+}
+
+.pulse{
+    width:8px;
+    height:8px;
+
+    background:#22c55e;
+
+    border-radius:50%;
+
+    box-shadow:0 0 10px #22c55e;
+}
+
+
+/* ========================= */
+/* Alert Cards */
+/* ========================= */
+
+.alert-card{
+    position:relative;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:25px;
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+    border-radius:12px;
+
+    padding:22px;
+
+    margin-bottom:15px;
+
+    transition:.3s;
+
+    overflow:hidden;
+}
+
+.alert-card::before{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:4px;
+    height:100%;
+}
+
+.alert-card:hover{
+    transform:translateY(-2px);
+
+    border-color:#475569;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.2);
+}
+
+
+/* ========================= */
+/* Severity Borders */
+/* ========================= */
+
+.alert-card.high::before{
+    background:#ef4444;
+}
+
+.alert-card.medium::before{
+    background:#f59e0b;
+}
+
+.alert-card.low::before{
+    background:#22c55e;
+}
+
+
+/* ========================= */
+/* Alert Main */
+/* ========================= */
+
+.alert-main{
+    flex:1;
+    min-width:0;
+}
+
+.alert-title-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.alert-icon{
+    width:40px;
+    height:40px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#111827;
+
+    border:1px solid #334155;
+
+    border-radius:9px;
+
+    font-size:18px;
+}
+
+.alert-title-row h4{
+    margin:0 0 3px;
+
+    color:#f8fafc;
+
+    font-size:17px;
+}
+
+.alert-id{
+    color:#64748b;
+    font-size:11px;
+    font-family:monospace;
+}
+
+.alert-main > p{
+    margin:14px 0;
+
+    color:#cbd5e1;
+
+    font-size:14px;
+}
+
+
+/* ========================= */
+/* Alert Meta */
+/* ========================= */
+
+.alert-meta{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:18px;
+
+    color:#94a3b8;
+
+    font-size:12px;
+}
+
+.alert-meta a{
+    color:#38bdf8;
+
+    text-decoration:none;
+
+    font-weight:bold;
+}
+
+.alert-meta a:hover{
+    color:#7dd3fc;
+
+    text-decoration:underline;
+}
+
+.alert-meta strong{
+    color:#e2e8f0;
+}
+
+
+/* ========================= */
+/* Alert Actions */
+/* ========================= */
+
+.alert-actions{
+    min-width:210px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+
+    gap:15px;
+}
+
+.alert-status{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+
+/* ========================= */
+/* Severity Badges */
+/* ========================= */
+
+.severity-badge,
+.state-badge{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    font-size:11px;
+
+    font-weight:bold;
+}
+
+.high-badge{
+    background:rgba(239,68,68,.12);
+    color:#ef4444;
+    border:1px solid rgba(239,68,68,.3);
+}
+
+.critical-badge{
+    background:rgba(220,38,38,.18);
+    color:#f87171;
+    border:1px solid rgba(220,38,38,.35);
+}
+
+.medium-badge{
+    background:rgba(245,158,11,.12);
+    color:#f59e0b;
+    border:1px solid rgba(245,158,11,.3);
+}
+
+.low-badge{
+    background:rgba(34,197,94,.12);
+    color:#22c55e;
+    border:1px solid rgba(34,197,94,.3);
+}
+
+
+/* ========================= */
+/* Alert State */
+/* ========================= */
+
+.active-state{
+    background:rgba(56,189,248,.1);
+    color:#38bdf8;
+    border:1px solid rgba(56,189,248,.25);
+}
+
+.ignored-state{
+    background:rgba(100,116,139,.12);
+    color:#94a3b8;
+    border:1px solid #475569;
+}
+
+.blocked-state{
+    background:rgba(239,68,68,.12);
+    color:#ef4444;
+    border:1px solid rgba(239,68,68,.3);
+}
+
+
+/* ========================= */
+/* Action Buttons */
+/* ========================= */
+
+.action-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.alert-actions button{
+    border:none;
+
+    padding:9px 13px;
+
+    border-radius:7px;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    transition:.25s;
+}
+
+.alert-actions button:hover{
+    transform:translateY(-2px);
+}
+
+
+/* Investigate */
+
+.investigate-btn{
+    background:#2563eb;
+}
+
+.investigate-btn:hover{
+    background:#3b82f6;
+}
+
+
+/* Block */
+
+.block-btn{
+    background:#dc2626;
+}
+
+.block-btn:hover{
+    background:#ef4444;
+}
+
+
+/* Ignore */
+
+.ignore-btn{
+    background:#475569;
+}
+
+.ignore-btn:hover{
+    background:#64748b;
+}
+
+
+/* Disabled */
+
+.alert-actions button:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+    transform:none;
+}
+
+
+/* ========================= */
+/* Selected Alert */
+/* ========================= */
+
+.alert-selected{
+    border-color:#38bdf8 !important;
+
+    box-shadow:
+        0 0 0 1px #38bdf8,
+        0 0 25px rgba(56,189,248,.12);
+}
+
+
+/* ========================= */
+/* Processed Alert */
+/* ========================= */
+
+.alert-processed{
+    opacity:.65;
+}
+
+.alert-processed .alert-main{
+    filter:saturate(.7);
+}
+
+
+/* ========================= */
+/* Footer */
+/* ========================= */
+
+.alerts-footer{
+    display:flex;
+    justify-content:space-between;
+
+    margin-top:25px;
+
+    padding:15px 5px;
+
+    color:#64748b;
+
+    font-size:11px;
+
+    border-top:1px solid #1e293b;
+}
+
+
+/* ========================= */
+/* Responsive */
+/* ========================= */
+
+@media(max-width:900px){
+
+    .alerts-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .alert-card{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .alert-actions{
+        width:100%;
+        align-items:flex-start;
+    }
+
+    .alert-status{
+        width:100%;
+    }
+
+    .action-buttons{
+        width:100%;
+        flex-wrap:wrap;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .alert-summary{
+        width:100%;
+    }
+
+    .summary-item{
+        flex:1;
+        min-width:0;
+    }
+
+    .alert-meta{
+        flex-direction:column;
+        gap:7px;
+    }
+
+    .alerts-footer{
+        flex-direction:column;
+        gap:8px;
+    }
+
+}
+/* =========================================
+   SENTINEL X - DATASET ALERT ACTION BUTTONS
+   ========================================= */
+
+.dataset-investigate-btn,
+.dataset-block-btn,
+.dataset-ignore-btn {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+
+/* Investigate */
+
+.dataset-investigate-btn {
+    background: #2563eb;
+    color: white;
+}
+
+.dataset-investigate-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+
+/* Block */
+
+.dataset-block-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.dataset-block-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+
+/* Ignore */
+
+.dataset-ignore-btn {
+    background: #475569;
+    color: white;
+}
+
+.dataset-ignore-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+
+/* Disabled buttons */
+
+.dataset-investigate-btn:disabled,
+.dataset-block-btn:disabled,
+.dataset-ignore-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}

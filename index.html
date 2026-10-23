@@ -1,0 +1,2873 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sentinel X | SOC Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/index.css"
+    >
+
+<script>
+    (function () {
+
+        let currentSession = null;
+
+        try {
+
+            const storedSession =
+                localStorage.getItem(
+                    "sentinelXSession"
+                );
+
+            if (storedSession) {
+
+                currentSession =
+                    JSON.parse(
+                        storedSession
+                    );
+
+            }
+
+        }
+
+        catch (error) {
+
+            currentSession = null;
+
+        }
+
+        if (
+            !currentSession ||
+            currentSession.authenticated !== true
+        ) {
+
+            window.location.replace(
+                "login.html"
+            );
+
+        }
+
+    })();
+</script>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- ========================= -->
+    <!-- Sidebar -->
+    <!-- ========================= -->
+
+    <aside class="sidebar">
+
+        <h2>🛡️ Sentinel X</h2>
+
+        <ul>
+
+            <li class="active">
+
+                <a href="index.html">
+                    🏠 Dashboard
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="alerts.html">
+                    🚨 Alerts
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="investigation.html">
+                    🔍 Investigation
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="incidents.html">
+                    📂 Incidents
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="employees.html">
+                    👥 Employees
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="devices.html">
+                    💻 Devices
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="threat-hunting.html">
+                    🎯 Threat Hunting
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="reports.html">
+                    📊 Reports
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="settings.html">
+                    ⚙️ Settings
+                </a>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- ========================= -->
+    <!-- Main Content -->
+    <!-- ========================= -->
+
+    <main class="main-content">
+
+
+        <!-- ========================= -->
+        <!-- Top Bar -->
+        <!-- ========================= -->
+
+        <div class="topbar">
+
+            <div class="topbar-left">
+
+                <h2 id="dashboardWelcome">
+                    Welcome
+                </h2>
+
+                <p>
+                    System Status:
+
+                    <span class="online">
+                        🟢 Online
+                    </span>
+
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <a
+                    href="alerts.html"
+                    id="dashboardAlertCount"
+                    style="
+                        text-decoration:none;
+                        color:inherit;
+                        cursor:pointer;
+                    "
+                >
+                    🔔 Alerts: 0
+                </a>
+
+
+                <button
+                    id="adminBtn"
+                    type="button"
+                    style="
+                        background:transparent;
+                        border:none;
+                        color:inherit;
+                        font:inherit;
+                        cursor:pointer;
+                    "
+                >
+                    👤
+
+                    <span id="dashboardUserName">
+                        User
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Page Title -->
+        <!-- ========================= -->
+
+        <h1>
+            SOC Dashboard
+        </h1>
+
+
+        <!-- ========================= -->
+        <!-- Simulate Attack -->
+        <!-- ========================= -->
+
+        <button
+            id="attackBtn"
+            type="button"
+        >
+            ⚠️ Simulate Attack
+        </button>
+
+
+        <!-- ========================= -->
+        <!-- Dashboard Cards -->
+        <!-- ========================= -->
+
+        <div class="cards">
+
+
+            <!-- Active Threats -->
+
+            <div
+                class="card"
+                id="activeThreatCard"
+                role="button"
+                tabindex="0"
+                title="View active threats"
+            >
+
+                <h3>
+                    Active Threats
+                </h3>
+
+                <p id="threats">
+                    0
+                </p>
+
+            </div>
+
+
+            <!-- Critical Alerts -->
+
+            <div
+                class="card"
+                id="criticalAlertCard"
+                role="button"
+                tabindex="0"
+                title="View critical alerts"
+            >
+
+                <h3>
+                    Critical Alerts
+                </h3>
+
+                <p id="alerts">
+                    0
+                </p>
+
+            </div>
+
+
+            <!-- Risk Level -->
+
+            <div
+                class="card"
+                id="riskCard"
+                role="button"
+                tabindex="0"
+                title="View risk details"
+            >
+
+                <h3>
+                    Risk Level
+                </h3>
+
+                <p id="risk">
+                    LOADING
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Recent Alerts -->
+        <!-- ========================= -->
+
+        <section class="alerts">
+
+            <h2>
+                🚨 Recent Alerts
+            </h2>
+
+            <div id="alertsContainer">
+
+                <p id="dashboardDatasetStatus">
+                    Loading CIC-IDS security events...
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- User Profile Popup -->
+<!-- ========================= -->
+
+<div
+    id="adminPopup"
+    style="
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.7);
+        justify-content:center;
+        align-items:center;
+        z-index:9999;
+    "
+>
+
+    <div
+        style="
+            width:420px;
+            max-width:90%;
+            background:#0f172a;
+            border:1px solid #38bdf8;
+            border-radius:14px;
+            padding:25px;
+            box-shadow:0 0 30px rgba(56,189,248,.25);
+        "
+    >
+
+        <div
+            style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                margin-bottom:20px;
+                padding-bottom:15px;
+                border-bottom:1px solid #334155;
+            "
+        >
+
+            <h2
+                id="profileTitle"
+                style="
+                    margin:0;
+                    color:#38bdf8;
+                "
+            >
+                👤 User Profile
+            </h2>
+
+
+            <button
+                id="closeAdminBtn"
+                type="button"
+                style="
+                    background:transparent;
+                    border:none;
+                    color:#94a3b8;
+                    font-size:20px;
+                    cursor:pointer;
+                "
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <!-- Name -->
+
+        <div
+            style="
+                background:#1e293b;
+                border:1px solid #334155;
+                border-radius:10px;
+                padding:15px;
+                margin-bottom:10px;
+            "
+        >
+
+            <strong style="color:#94a3b8;">
+                Name
+            </strong>
+
+            <div
+                id="profileName"
+                style="
+                    color:white;
+                    margin-top:5px;
+                "
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <!-- Role -->
+
+        <div
+            style="
+                background:#1e293b;
+                border:1px solid #334155;
+                border-radius:10px;
+                padding:15px;
+                margin-bottom:10px;
+            "
+        >
+
+            <strong style="color:#94a3b8;">
+                Role
+            </strong>
+
+            <div
+                id="profileRole"
+                style="
+                    color:white;
+                    margin-top:5px;
+                "
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <!-- Access Level -->
+
+        <div
+            style="
+                background:#1e293b;
+                border:1px solid #334155;
+                border-radius:10px;
+                padding:15px;
+                margin-bottom:10px;
+            "
+        >
+
+            <strong style="color:#94a3b8;">
+                Access Level
+            </strong>
+
+            <div
+                id="profileAccessLevel"
+                style="
+                    color:#22c55e;
+                    margin-top:5px;
+                "
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <!-- Session -->
+
+        <div
+            style="
+                background:#1e293b;
+                border:1px solid #334155;
+                border-radius:10px;
+                padding:15px;
+                margin-bottom:15px;
+            "
+        >
+
+            <strong style="color:#94a3b8;">
+                Session
+            </strong>
+
+            <div
+                style="
+                    color:#22c55e;
+                    margin-top:5px;
+                "
+            >
+                🟢 Active
+            </div>
+
+        </div>
+
+
+        <!-- Logout -->
+
+        <button
+            id="logoutBtn"
+            type="button"
+            style="
+                width:100%;
+                padding:12px;
+                border:none;
+                border-radius:8px;
+                background:#ef4444;
+                color:white;
+                font-weight:bold;
+                cursor:pointer;
+            "
+        >
+            🚪 Logout
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- Dashboard Information Popup -->
+<!-- ========================= -->
+
+<div
+    id="dashboardInfoPopup"
+    style="
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.7);
+        justify-content:center;
+        align-items:center;
+        z-index:9999;
+    "
+>
+
+    <div
+        style="
+            width:500px;
+            max-width:90%;
+            background:#0f172a;
+            border:1px solid #38bdf8;
+            border-radius:14px;
+            padding:25px;
+            box-shadow:0 0 30px rgba(56,189,248,.25);
+        "
+    >
+
+        <div
+            style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                border-bottom:1px solid #334155;
+                padding-bottom:15px;
+                margin-bottom:20px;
+            "
+        >
+
+            <h2
+                id="infoPopupTitle"
+                style="
+                    margin:0;
+                    color:#38bdf8;
+                "
+            >
+                Dashboard Information
+            </h2>
+
+
+            <button
+                id="closeInfoBtn"
+                type="button"
+                style="
+                    background:transparent;
+                    border:none;
+                    color:#94a3b8;
+                    font-size:20px;
+                    cursor:pointer;
+                "
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div
+            id="infoPopupContent"
+            style="
+                color:#e2e8f0;
+                line-height:1.7;
+            "
+        >
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- Shared JavaScript -->
+<!-- ========================= -->
+
+<script src="script.js"></script>
+
+
+<!-- ========================= -->
+<!-- Dashboard JavaScript -->
+<!-- ========================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function () {
+
+
+        /* ========================= */
+        /* Login Session */
+        /* ========================= */
+
+        let currentSession = null;
+
+
+        try {
+
+            const storedSession =
+                localStorage.getItem(
+                    "sentinelXSession"
+                );
+
+
+            if (storedSession) {
+
+                currentSession =
+                    JSON.parse(
+                        storedSession
+                    );
+
+            }
+
+        }
+
+        catch (error) {
+
+            currentSession = null;
+
+        }
+
+
+        /*
+            Dashboard protection:
+            user must log in before opening Sentinel X.
+        */
+
+        if (
+            !currentSession ||
+            currentSession.authenticated !== true
+        ) {
+
+            window.location.replace(
+                "login.html"
+            );
+
+            return;
+
+        }
+
+
+        /* ========================= */
+        /* Elements */
+        /* ========================= */
+
+        const adminBtn =
+            document.getElementById(
+                "adminBtn"
+            );
+
+
+        const adminPopup =
+            document.getElementById(
+                "adminPopup"
+            );
+
+
+        const closeAdminBtn =
+            document.getElementById(
+                "closeAdminBtn"
+            );
+
+
+        const logoutBtn =
+            document.getElementById(
+                "logoutBtn"
+            );
+
+
+        const dashboardWelcome =
+            document.getElementById(
+                "dashboardWelcome"
+            );
+
+
+        const dashboardUserName =
+            document.getElementById(
+                "dashboardUserName"
+            );
+
+
+        const profileTitle =
+            document.getElementById(
+                "profileTitle"
+            );
+
+
+        const profileName =
+            document.getElementById(
+                "profileName"
+            );
+
+
+        const profileRole =
+            document.getElementById(
+                "profileRole"
+            );
+
+
+        const profileAccessLevel =
+            document.getElementById(
+                "profileAccessLevel"
+            );
+
+
+        const activeThreatCard =
+            document.getElementById(
+                "activeThreatCard"
+            );
+
+
+        const criticalAlertCard =
+            document.getElementById(
+                "criticalAlertCard"
+            );
+
+
+        const riskCard =
+            document.getElementById(
+                "riskCard"
+            );
+
+
+        const infoPopup =
+            document.getElementById(
+                "dashboardInfoPopup"
+            );
+
+
+        const infoPopupTitle =
+            document.getElementById(
+                "infoPopupTitle"
+            );
+
+
+        const infoPopupContent =
+            document.getElementById(
+                "infoPopupContent"
+            );
+
+
+        const closeInfoBtn =
+            document.getElementById(
+                "closeInfoBtn"
+            );
+
+
+        const attackBtn =
+            document.getElementById(
+                "attackBtn"
+            );
+
+
+        const alertsContainer =
+            document.getElementById(
+                "alertsContainer"
+            );
+
+
+        const alertCount =
+            document.getElementById(
+                "dashboardAlertCount"
+            );
+
+
+        const threatsElement =
+            document.getElementById(
+                "threats"
+            );
+
+
+        const criticalElement =
+            document.getElementById(
+                "alerts"
+            );
+
+
+        const riskElement =
+            document.getElementById(
+                "risk"
+            );
+
+
+        /* ========================= */
+        /* Logged-In User */
+        /* ========================= */
+
+        if (dashboardWelcome) {
+
+            dashboardWelcome.textContent =
+                "Welcome, " +
+                currentSession.role;
+
+        }
+
+
+        if (dashboardUserName) {
+    dashboardUserName.textContent =
+        currentSession.permission === "admin"
+            ? "Admin"
+            : currentSession.name;
+}
+
+        if (profileTitle) {
+
+            profileTitle.textContent =
+                "👤 User Profile";
+
+        }
+
+
+        if (profileName) {
+
+            profileName.textContent =
+                currentSession.name;
+
+        }
+
+
+        if (profileRole) {
+
+            profileRole.textContent =
+                currentSession.role;
+
+        }
+
+
+        if (profileAccessLevel) {
+
+            profileAccessLevel.textContent =
+                currentSession.accessLevel;
+
+        }
+
+
+        /* ========================= */
+        /* RBAC */
+        /* ========================= */
+
+        const userPermission =
+            currentSession.permission;
+
+
+        const canRespond =
+            userPermission === "admin" ||
+            userPermission === "analyst";
+
+
+        /*
+            Admin and Analyst can simulate
+            a response scenario.
+
+            Monitor is read-only.
+        */
+
+        if (
+            attackBtn &&
+            !canRespond
+        ) {
+
+            attackBtn.disabled = true;
+
+            attackBtn.textContent =
+                "🔒 Simulate Attack - Read Only";
+
+            attackBtn.title =
+                "SOC Monitor has read-only access";
+
+            attackBtn.style.opacity =
+                "0.55";
+
+            attackBtn.style.cursor =
+                "not-allowed";
+
+        }
+                /* ========================= */
+        /* Profile Popup */
+        /* ========================= */
+
+        if (
+            adminBtn &&
+            adminPopup
+        ) {
+
+            adminBtn.addEventListener(
+                "click",
+                function () {
+
+                    adminPopup.style.display =
+                        "flex";
+
+                }
+            );
+
+        }
+
+
+        if (
+            closeAdminBtn &&
+            adminPopup
+        ) {
+
+            closeAdminBtn.addEventListener(
+                "click",
+                function () {
+
+                    adminPopup.style.display =
+                        "none";
+
+                }
+            );
+
+        }
+
+
+        if (adminPopup) {
+
+            adminPopup.addEventListener(
+                "click",
+                function (event) {
+
+                    if (
+                        event.target ===
+                        adminPopup
+                    ) {
+
+                        adminPopup.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* ========================= */
+        /* Logout */
+        /* ========================= */
+
+        if (logoutBtn) {
+
+            logoutBtn.addEventListener(
+                "click",
+                function () {
+
+                    localStorage.removeItem(
+                        "sentinelXSession"
+                    );
+
+                    window.location.replace(
+                        "login.html"
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* ========================= */
+        /* Information Popup */
+        /* ========================= */
+
+        function openInfoPopup(
+            title,
+            content
+        ) {
+
+            if (
+                !infoPopup ||
+                !infoPopupTitle ||
+                !infoPopupContent
+            ) {
+
+                return;
+
+            }
+
+
+            infoPopupTitle.textContent =
+                title;
+
+            infoPopupContent.innerHTML =
+                content;
+
+            infoPopup.style.display =
+                "flex";
+
+        }
+
+
+        if (
+            closeInfoBtn &&
+            infoPopup
+        ) {
+
+            closeInfoBtn.addEventListener(
+                "click",
+                function () {
+
+                    infoPopup.style.display =
+                        "none";
+
+                }
+            );
+
+        }
+
+
+        if (infoPopup) {
+
+            infoPopup.addEventListener(
+                "click",
+                function (event) {
+
+                    if (
+                        event.target ===
+                        infoPopup
+                    ) {
+
+                        infoPopup.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* ========================= */
+        /* Keyboard - Escape */
+        /* ========================= */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key !==
+                    "Escape"
+                ) {
+
+                    return;
+
+                }
+
+
+                if (adminPopup) {
+
+                    adminPopup.style.display =
+                        "none";
+
+                }
+
+
+                if (infoPopup) {
+
+                    infoPopup.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+
+        /* ========================= */
+        /* Stored Security States */
+        /* ========================= */
+
+        let blockedAlerts = [];
+
+        let ignoredAlerts = [];
+
+        let isolatedDevices = [];
+
+
+        try {
+
+            blockedAlerts =
+                JSON.parse(
+                    localStorage.getItem(
+                        "sentinelXBlockedAlerts"
+                    )
+                ) || [];
+
+        }
+
+        catch (error) {
+
+            blockedAlerts = [];
+
+        }
+
+
+        try {
+
+            ignoredAlerts =
+                JSON.parse(
+                    localStorage.getItem(
+                        "sentinelXIgnoredAlerts"
+                    )
+                ) || [];
+
+        }
+
+        catch (error) {
+
+            ignoredAlerts = [];
+
+        }
+
+
+        try {
+
+            isolatedDevices =
+                JSON.parse(
+                    localStorage.getItem(
+                        "sentinelXIsolatedDevices"
+                    )
+                ) || [];
+
+        }
+
+        catch (error) {
+
+            isolatedDevices = [];
+
+        }
+
+
+        /* ========================= */
+        /* Severity Helper */
+        /* ========================= */
+
+        function getSeverity(
+            riskScore
+        ) {
+
+            const risk =
+                Number(
+                    riskScore
+                ) || 0;
+
+
+            if (risk >= 90) {
+
+                return "CRITICAL";
+
+            }
+
+
+            if (risk >= 80) {
+
+                return "HIGH";
+
+            }
+
+
+            if (risk >= 70) {
+
+                return "MEDIUM";
+
+            }
+
+
+            return "LOW";
+
+        }
+
+
+        /* ========================= */
+        /* Severity CSS Helper */
+        /* ========================= */
+
+        function getSeverityClass(
+            severity
+        ) {
+
+            return severity.toLowerCase();
+
+        }
+
+
+        /* ========================= */
+        /* Alert Icon Helper */
+        /* ========================= */
+
+        function getAttackIcon(
+            attackType
+        ) {
+
+            const attack =
+                String(
+                    attackType || ""
+                ).toLowerCase();
+
+
+            if (
+                attack.includes(
+                    "infiltration"
+                )
+            ) {
+
+                return "🕵️";
+
+            }
+
+
+            if (
+                attack.includes(
+                    "ddos"
+                ) ||
+                attack.includes(
+                    "dos"
+                )
+            ) {
+
+                return "🌐";
+
+            }
+
+
+            if (
+                attack.includes(
+                    "portscan"
+                )
+            ) {
+
+                return "🔎";
+
+            }
+
+
+            if (
+                attack.includes(
+                    "brute"
+                ) ||
+                attack.includes(
+                    "patator"
+                )
+            ) {
+
+                return "🔐";
+
+            }
+
+
+            if (
+                attack.includes(
+                    "web attack"
+                ) ||
+                attack.includes(
+                    "xss"
+                ) ||
+                attack.includes(
+                    "sql"
+                )
+            ) {
+
+                return "💻";
+
+            }
+
+
+            if (
+                attack.includes(
+                    "bot"
+                )
+            ) {
+
+                return "🤖";
+
+            }
+
+
+            return "⚠️";
+
+        }
+
+
+        /* ========================= */
+        /* CIC-IDS Dataset */
+        /* ========================= */
+
+        let dashboardDataset = [];
+
+        let dashboardAlerts = [];
+
+        let dashboardCriticalAlerts = [];
+
+        let dashboardActiveThreats = [];
+
+
+        try {
+
+            const response =
+                await fetch(
+                    "data/sentinel_data.json"
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Dataset HTTP error: " +
+                    response.status
+                );
+
+            }
+
+
+            dashboardDataset =
+                await response.json();
+
+
+            /*
+                Sort highest-risk events first.
+
+                This keeps the Dashboard,
+                Alerts and Investigation
+                workflow aligned with the
+                existing Sentinel X logic.
+            */
+
+            dashboardAlerts =
+                [...dashboardDataset]
+                    .sort(
+                        function (a, b) {
+
+                            return (
+                                Number(
+                                    b.riskScore
+                                ) -
+                                Number(
+                                    a.riskScore
+                                )
+                            );
+
+                        }
+                    )
+                    .slice(
+                        0,
+                        12
+                    );
+
+
+            dashboardCriticalAlerts =
+                dashboardAlerts.filter(
+                    function (record) {
+
+                        return (
+                            Number(
+                                record.riskScore
+                            ) >= 90
+                        );
+
+                    }
+                );
+
+
+            dashboardActiveThreats =
+                dashboardAlerts.filter(
+                    function (record) {
+
+                        return (
+                            Number(
+                                record.riskScore
+                            ) >= 80
+                        );
+
+                    }
+                );
+
+
+            console.log(
+                "Sentinel X Dashboard Dataset Loaded:",
+                dashboardDataset.length
+            );
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Failed to load Sentinel X Dashboard Dataset:",
+                error
+            );
+
+
+            if (alertsContainer) {
+
+                alertsContainer.innerHTML = `
+
+                    <p style="
+                        color:#ef4444;
+                        padding:15px 0;
+                    ">
+
+                        ⚠️ Unable to load CIC-IDS security events.
+
+                    </p>
+
+                `;
+
+            }
+
+
+            if (threatsElement) {
+
+                threatsElement.textContent =
+                    "0";
+
+            }
+
+
+            if (criticalElement) {
+
+                criticalElement.textContent =
+                    "0";
+
+            }
+
+
+            if (alertCount) {
+
+                alertCount.textContent =
+                    "🔔 Alerts: 0";
+
+            }
+
+
+            if (riskElement) {
+
+                riskElement.textContent =
+                    "UNKNOWN";
+
+                riskElement.className =
+                    "";
+
+            }
+
+        }
+
+
+        /* ========================= */
+        /* Dashboard Counters */
+        /* ========================= */
+
+        if (
+            dashboardAlerts.length > 0
+        ) {
+
+            if (threatsElement) {
+
+                threatsElement.textContent =
+                    dashboardActiveThreats.length;
+
+            }
+
+
+            if (criticalElement) {
+
+                criticalElement.textContent =
+                    dashboardCriticalAlerts.length;
+
+            }
+
+
+            if (alertCount) {
+
+                alertCount.textContent =
+                    "🔔 Alerts: " +
+                    dashboardAlerts.length;
+
+            }
+
+
+            /* ========================= */
+            /* Current Risk Level */
+            /* ========================= */
+
+            const highestRisk =
+                Math.max(
+                    ...dashboardAlerts.map(
+                        function (record) {
+
+                            return (
+                                Number(
+                                    record.riskScore
+                                ) || 0
+                            );
+
+                        }
+                    )
+                );
+
+
+            if (riskElement) {
+
+                if (highestRisk >= 90) {
+
+                    riskElement.textContent =
+                        "CRITICAL";
+
+                    riskElement.className =
+                        "risk-critical";
+
+                }
+
+                else if (highestRisk >= 80) {
+
+                    riskElement.textContent =
+                        "HIGH";
+
+                    riskElement.className =
+                        "risk-high";
+
+                }
+
+                else if (highestRisk >= 70) {
+
+                    riskElement.textContent =
+                        "MEDIUM";
+
+                    riskElement.className =
+                        "risk-medium";
+
+                }
+
+                else {
+
+                    riskElement.textContent =
+                        "LOW";
+
+                    riskElement.className =
+                        "";
+
+                }
+
+            }
+
+        }
+
+
+        /* ========================= */
+        /* Render Recent Alerts */
+        /* ========================= */
+
+        if (
+            alertsContainer &&
+            dashboardAlerts.length > 0
+        ) {
+
+            alertsContainer.innerHTML =
+                "";
+
+
+            /*
+                Dashboard only displays
+                the six highest-risk alerts.
+
+                The twelve selected records
+                still determine the Dashboard
+                counters and Investigation IDs.
+            */
+
+            const recentAlerts =
+                dashboardAlerts.slice(
+                    0,
+                    6
+                );
+
+
+            recentAlerts.forEach(
+                function (
+                    record,
+                    index
+                ) {
+
+                    const alertID =
+                        "DATA-ALT-" +
+                        String(
+                            index + 1
+                        ).padStart(
+                            3,
+                            "0"
+                        );
+
+
+                    const severity =
+                        getSeverity(
+                            record.riskScore
+                        );
+
+
+                    const severityClass =
+                        getSeverityClass(
+                            severity
+                        );
+
+
+                    const icon =
+                        getAttackIcon(
+                            record.attackType
+                        );
+
+
+                    const alertLink =
+                        document.createElement(
+                            "a"
+                        );
+
+
+                    /*
+                        FIX:
+
+                        Dataset alerts now open
+                        Investigation directly.
+                    */
+
+                    alertLink.href =
+                        "investigation.html?alert=" +
+                        encodeURIComponent(
+                            alertID
+                        );
+
+
+                    alertLink.className =
+                        "dashboard-alert-link";
+
+
+                    alertLink.dataset.alertId =
+                        alertID;
+
+
+                    const alertCard =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    alertCard.className =
+                        "dashboard-alert " +
+                        "severity-" +
+                        severityClass;
+
+
+                    alertCard.dataset.dashboardAlert =
+                        alertID;
+
+
+                    alertCard.dataset.device =
+                        record.targetDevice || "";
+
+
+                    alertCard.dataset.recordId =
+                        record.id || "";
+
+
+                    alertCard.innerHTML = `
+
+                        <div class="dashboard-alert-info">
+
+                            <div class="dashboard-alert-icon">
+                                ${icon}
+                            </div>
+
+                            <div class="dashboard-alert-text">
+
+                                <span class="dashboard-alert-title">
+                                    ${record.attackType || "Security Event"}
+                                </span>
+
+                                <span class="dashboard-alert-meta">
+                                    ${alertID}
+                                    •
+                                    ${record.targetDevice || "Unknown Device"}
+                                    •
+                                    ${record.employee || "Unknown User"}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <span
+                            class="dashboard-severity ${severityClass}"
+                        >
+                            ${severity}
+                        </span>
+
+                    `;
+
+
+                    /* ========================= */
+                    /* Restore Security State */
+                    /* ========================= */
+
+                    if (
+                        blockedAlerts.includes(
+                            alertID
+                        ) ||
+                        isolatedDevices.includes(
+                            record.targetDevice
+                        )
+                    ) {
+
+                        alertCard.classList.add(
+                            "alert-blocked"
+                        );
+
+                    }
+
+
+                    if (
+                        ignoredAlerts.includes(
+                            alertID
+                        )
+                    ) {
+
+                        alertCard.style.opacity =
+                            "0.5";
+
+                    }
+
+
+                    alertLink.appendChild(
+                        alertCard
+                    );
+
+
+                    alertsContainer.appendChild(
+                        alertLink
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* ========================= */
+        /* Recent Alert Routing */
+        /* ========================= */
+
+        if (alertsContainer) {
+
+            alertsContainer.addEventListener(
+                "click",
+                function (event) {
+
+                    const alertLink =
+                        event.target.closest(
+                            ".dashboard-alert-link[data-alert-id]"
+                        );
+
+
+                    if (!alertLink) {
+
+                        return;
+
+                    }
+
+
+                    /*
+                        Explicit routing prevents
+                        older Dashboard handlers
+                        from sending DATA alerts
+                        back to alerts.html.
+                    */
+
+                    event.preventDefault();
+
+
+                    const selectedAlertID =
+                        alertLink.dataset.alertId;
+
+
+                    if (!selectedAlertID) {
+
+                        return;
+
+                    }
+
+
+                    window.location.href =
+                        "investigation.html?alert=" +
+                        encodeURIComponent(
+                            selectedAlertID
+                        );
+
+                }
+            );
+
+        }
+                /* ========================= */
+        /* Active Threats Popup */
+        /* ========================= */
+
+        function openThreats() {
+
+            const activeThreatCount =
+                dashboardActiveThreats.length;
+
+            let threatPreview = "";
+
+
+            if (
+                dashboardActiveThreats.length >
+                0
+            ) {
+
+                threatPreview =
+                    dashboardActiveThreats
+                        .slice(
+                            0,
+                            5
+                        )
+                        .map(
+                            function (
+                                record
+                            ) {
+
+                                const risk =
+                                    Number(
+                                        record.riskScore
+                                    ) || 0;
+
+
+                                const severity =
+                                    getSeverity(
+                                        risk
+                                    );
+
+
+                                return `
+
+                                    <div
+                                        style="
+                                            background:#1e293b;
+                                            border:1px solid #334155;
+                                            border-radius:8px;
+                                            padding:10px;
+                                            margin-top:8px;
+                                        "
+                                    >
+
+                                        <strong>
+                                            ${record.attackType || "Security Event"}
+                                        </strong>
+
+                                        <br>
+
+                                        <span style="color:#94a3b8;">
+                                            ${record.targetDevice || "Unknown Device"}
+                                            •
+                                            Risk ${risk}/100
+                                            •
+                                            ${severity}
+                                        </span>
+
+                                    </div>
+
+                                `;
+
+                            }
+                        )
+                        .join("");
+
+            }
+
+            else {
+
+                threatPreview = `
+
+                    <p>
+                        No active high-risk threats
+                        are currently displayed.
+                    </p>
+
+                `;
+
+            }
+
+
+            openInfoPopup(
+
+                "⚠️ Active Threats",
+
+                `
+
+                <p>
+                    Sentinel X is currently monitoring
+
+                    <strong>
+                        ${activeThreatCount} active high-risk threats
+                    </strong>
+
+                    from the CIC-IDS dataset.
+                </p>
+
+
+                ${threatPreview}
+
+
+                <p style="margin-top:18px;">
+
+                    <a
+                        href="alerts.html"
+                        style="
+                            color:#38bdf8;
+                            font-weight:bold;
+                            text-decoration:none;
+                        "
+                    >
+                        → Open Security Alerts
+                    </a>
+
+                </p>
+
+                `
+
+            );
+
+        }
+
+
+        /* ========================= */
+        /* Active Threats Events */
+        /* ========================= */
+
+        if (activeThreatCard) {
+
+            activeThreatCard.addEventListener(
+                "click",
+                openThreats
+            );
+
+
+            activeThreatCard.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
+
+                        event.preventDefault();
+
+                        openThreats();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* ========================= */
+        /* Critical Alerts Popup */
+        /* ========================= */
+
+        function openCriticalAlerts() {
+
+            const criticalCount =
+                dashboardCriticalAlerts.length;
+
+            let criticalPreview = "";
+
+
+            if (
+                dashboardCriticalAlerts.length >
+                0
+            ) {
+
+                criticalPreview =
+                    dashboardCriticalAlerts
+                        .slice(
+                            0,
+                            5
+                        )
+                        .map(
+                            function (record) {
+
+                                return `
+
+                                    <div
+                                        style="
+                                            background:#1e293b;
+                                            border:1px solid #334155;
+                                            border-radius:8px;
+                                            padding:10px;
+                                            margin-top:8px;
+                                        "
+                                    >
+
+                                        <strong>
+                                            ${record.attackType || "Security Event"}
+                                        </strong>
+
+                                        <br>
+
+                                        <span style="color:#94a3b8;">
+                                            ${record.targetDevice || "Unknown Device"}
+                                            •
+                                            Risk ${Number(record.riskScore) || 0}/100
+                                        </span>
+
+                                    </div>
+
+                                `;
+
+                            }
+                        )
+                        .join("");
+
+            }
+
+            else {
+
+                criticalPreview = `
+
+                    <p>
+                        No critical alerts are
+                        currently displayed.
+                    </p>
+
+                `;
+
+            }
+
+
+            openInfoPopup(
+
+                "🚨 Critical Alerts",
+
+                `
+
+                <p>
+                    Sentinel X detected
+
+                    <strong>
+                        ${criticalCount} critical alerts
+                    </strong>
+
+                    in the current Dashboard dataset view.
+                </p>
+
+
+                <p>
+                    Critical alerts have a
+                    risk score of 90 or higher.
+                </p>
+
+
+                ${criticalPreview}
+
+
+                <p style="margin-top:18px;">
+
+                    <a
+                        href="alerts.html"
+                        style="
+                            color:#38bdf8;
+                            font-weight:bold;
+                            text-decoration:none;
+                        "
+                    >
+                        → View Security Alerts
+                    </a>
+
+                </p>
+
+                `
+
+            );
+
+        }
+
+
+        /* ========================= */
+        /* Critical Alert Events */
+        /* ========================= */
+
+        if (criticalAlertCard) {
+
+            criticalAlertCard.addEventListener(
+                "click",
+                openCriticalAlerts
+            );
+
+
+            criticalAlertCard.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
+
+                        event.preventDefault();
+
+                        openCriticalAlerts();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* ========================= */
+        /* Risk Level Popup */
+        /* ========================= */
+
+        function openRiskDetails() {
+
+            const currentRisk =
+                riskElement
+                    ? riskElement.textContent.trim()
+                    : "UNKNOWN";
+
+
+            const activeThreatCount =
+                dashboardActiveThreats.length;
+
+
+            const criticalCount =
+                dashboardCriticalAlerts.length;
+
+
+            const highestRisk =
+                dashboardAlerts.length > 0
+                    ? Math.max(
+                        ...dashboardAlerts.map(
+                            function (record) {
+
+                                return (
+                                    Number(
+                                        record.riskScore
+                                    ) || 0
+                                );
+
+                            }
+                        )
+                    )
+                    : 0;
+
+
+            openInfoPopup(
+
+                "🛡️ Risk Level",
+
+                `
+
+                <p>
+                    Current system risk level:
+
+                    <strong style="color:#ef4444;">
+                        ${currentRisk}
+                    </strong>
+
+                </p>
+
+
+                <p>
+                    The current level is calculated
+                    from the highest-risk security
+                    events displayed from the
+                    CIC-IDS dataset.
+                </p>
+
+
+                <div
+                    style="
+                        background:#1e293b;
+                        border:1px solid #334155;
+                        border-radius:8px;
+                        padding:12px;
+                        margin-top:12px;
+                    "
+                >
+
+                    🔴 Active high-risk threats:
+
+                    <strong>
+                        ${activeThreatCount}
+                    </strong>
+
+                    <br>
+
+                    ☠️ Critical alerts:
+
+                    <strong>
+                        ${criticalCount}
+                    </strong>
+
+                    <br>
+
+                    📊 Highest risk score:
+
+                    <strong>
+                        ${highestRisk}/100
+                    </strong>
+
+                </div>
+
+
+                <p style="margin-top:18px;">
+
+                    <a
+                        href="alerts.html"
+                        style="
+                            color:#38bdf8;
+                            font-weight:bold;
+                            text-decoration:none;
+                        "
+                    >
+                        → View Security Alerts
+                    </a>
+
+                </p>
+
+                `
+
+            );
+
+        }
+
+
+        /* ========================= */
+        /* Risk Level Events */
+        /* ========================= */
+
+        if (riskCard) {
+
+            riskCard.addEventListener(
+                "click",
+                openRiskDetails
+            );
+
+
+            riskCard.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
+
+                        event.preventDefault();
+
+                        openRiskDetails();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* ========================= */
+        /* Simulated Attack */
+        /* ========================= */
+
+        if (attackBtn) {
+
+            attackBtn.addEventListener(
+                "click",
+                function () {
+
+
+                    /* ========================= */
+                    /* RBAC Check */
+                    /* ========================= */
+
+                    if (!canRespond) {
+
+                        openInfoPopup(
+
+                            "🔒 Read-Only Access",
+
+                            `
+
+                            <p>
+                                Your current role is
+
+                                <strong>
+                                    ${currentSession.role}
+                                </strong>.
+                            </p>
+
+
+                            <p>
+                                This account has
+                                monitoring access only.
+                            </p>
+
+
+                            <p>
+                                Response and simulation
+                                actions require
+                                SOC Analyst or
+                                Administrator access.
+                            </p>
+
+                            `
+
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    /* ========================= */
+                    /* Prevent Duplicate */
+                    /* ========================= */
+
+                    const existingSimulation =
+                        document.getElementById(
+                            "SIM-001"
+                        );
+
+
+                    if (existingSimulation) {
+
+                        openInfoPopup(
+
+                            "⚠️ Simulation Already Active",
+
+                            `
+
+                            <p>
+                                A simulated attack is
+                                already active on the
+                                Dashboard.
+                            </p>
+
+
+                            <p>
+                                Simulation ID:
+
+                                <strong>
+                                    SIM-001
+                                </strong>
+                            </p>
+
+                            `
+
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    /* ========================= */
+                    /* Create Simulated Alert */
+                    /* ========================= */
+
+                    const simulatedAlert =
+                        document.createElement(
+                            "a"
+                        );
+
+
+                    simulatedAlert.href =
+                        "alerts.html";
+
+
+                    simulatedAlert.className =
+                        "dashboard-alert-link";
+
+
+                    simulatedAlert.id =
+                        "SIM-001";
+
+
+                    simulatedAlert.innerHTML = `
+
+                        <div
+                            class="
+                                dashboard-alert
+                                severity-critical
+                            "
+                            data-dashboard-alert="SIM-001"
+                            data-device="SIM-PC-001"
+                        >
+
+                            <div
+                                class="dashboard-alert-info"
+                            >
+
+                                <div
+                                    class="dashboard-alert-icon"
+                                >
+                                    ⚠️
+                                </div>
+
+
+                                <div
+                                    class="dashboard-alert-text"
+                                >
+
+                                    <span
+                                        class="dashboard-alert-title"
+                                    >
+                                        Simulated Network Attack
+                                    </span>
+
+
+                                    <span
+                                        class="dashboard-alert-meta"
+                                    >
+                                        SIM-001
+                                        •
+                                        SIM-PC-001
+                                        •
+                                        Simulation
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <span
+                                class="
+                                    dashboard-severity
+                                    critical
+                                "
+                            >
+                                CRITICAL
+                            </span>
+
+                        </div>
+
+                    `;
+
+
+                    if (alertsContainer) {
+
+                        alertsContainer.prepend(
+                            simulatedAlert
+                        );
+
+                    }
+
+
+                    /* ========================= */
+                    /* Update Counters */
+                    /* ========================= */
+
+                    const currentThreats =
+                        parseInt(
+                            threatsElement
+                                ?.textContent || "0",
+                            10
+                        ) || 0;
+
+
+                    const currentCritical =
+                        parseInt(
+                            criticalElement
+                                ?.textContent || "0",
+                            10
+                        ) || 0;
+
+
+                    const currentTopbarAlerts =
+                        parseInt(
+                            (
+                                alertCount
+                                    ?.textContent || ""
+                            ).replace(
+                                /\D/g,
+                                ""
+                            ),
+                            10
+                        ) || 0;
+
+
+                    if (threatsElement) {
+
+                        threatsElement.textContent =
+                            currentThreats + 1;
+
+                    }
+
+
+                    if (criticalElement) {
+
+                        criticalElement.textContent =
+                            currentCritical + 1;
+
+                    }
+
+
+                    if (alertCount) {
+
+                        alertCount.textContent =
+                            "🔔 Alerts: " +
+                            (
+                                currentTopbarAlerts +
+                                1
+                            );
+
+                    }
+
+
+                    if (riskElement) {
+
+                        riskElement.textContent =
+                            "CRITICAL";
+
+                        riskElement.className =
+                            "risk-critical";
+
+                    }
+                                        /* ========================= */
+                    /* Simulation Confirmation */
+                    /* ========================= */
+
+                    openInfoPopup(
+
+                        "⚠️ Attack Simulation",
+
+                        `
+
+                        <p>
+                            <strong>
+                                Simulated attack detected
+                                successfully.
+                            </strong>
+                        </p>
+
+
+                        <p>
+                            Sentinel X detected a
+                            simulated critical
+                            security event.
+                        </p>
+
+
+                        <div
+                            style="
+                                background:#1e293b;
+                                border:1px solid #334155;
+                                border-radius:8px;
+                                padding:12px;
+                                margin-top:12px;
+                            "
+                        >
+
+                            Simulation ID:
+
+                            <strong>
+                                SIM-001
+                            </strong>
+
+                            <br>
+
+                            Device:
+
+                            <strong>
+                                SIM-PC-001
+                            </strong>
+
+                            <br>
+
+                            Severity:
+
+                            <strong
+                                style="color:#ef4444;"
+                            >
+                                CRITICAL
+                            </strong>
+
+                            <br>
+
+                            Risk Score:
+
+                            <strong>
+                                100/100
+                            </strong>
+
+                        </div>
+
+
+                        <p style="margin-top:15px;">
+                            This simulation demonstrates
+                            how the Sentinel X Dashboard
+                            responds to a new critical
+                            security event.
+                        </p>
+
+                        `
+
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* ========================= */
+        /* Dashboard Card Keyboard */
+        /* ========================= */
+
+        const dashboardCards =
+            document.querySelectorAll(
+                ".card"
+            );
+
+
+        dashboardCards.forEach(
+            function (card) {
+
+                card.addEventListener(
+                    "keydown",
+                    function (event) {
+
+                        if (
+                            event.key === "Enter" ||
+                            event.key === " "
+                        ) {
+
+                            event.preventDefault();
+
+                            card.click();
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* ========================= */
+        /* Sidebar Session Protection */
+        /* ========================= */
+
+        document
+            .querySelectorAll(
+                ".sidebar a"
+            )
+            .forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function (event) {
+
+                            const session =
+                                localStorage.getItem(
+                                    "sentinelXSession"
+                                );
+
+
+                            if (!session) {
+
+                                event.preventDefault();
+
+                                window.location.replace(
+                                    "login.html"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* ========================= */
+        /* Settings Restriction */
+        /* ========================= */
+
+        const settingsLink =
+            document.querySelector(
+                '.sidebar a[href="settings.html"]'
+            );
+
+
+        if (
+            settingsLink &&
+            userPermission !== "admin"
+        ) {
+
+            settingsLink.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    openInfoPopup(
+
+                        "🔒 Restricted Access",
+
+                        `
+
+                        <p>
+                            The Settings area requires
+                            Administrator access.
+                        </p>
+
+
+                        <p>
+                            Current role:
+
+                            <strong>
+                                ${currentSession.role}
+                            </strong>
+                        </p>
+
+
+                        <p>
+                            Your current Sentinel X
+                            session remains active.
+                        </p>
+
+                        `
+
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* ========================= */
+        /* Profile Button Title */
+        /* ========================= */
+
+        if (adminBtn) {
+
+            adminBtn.title =
+                currentSession.role +
+                " — " +
+                currentSession.accessLevel;
+
+        }
+
+
+        /* ========================= */
+        /* RBAC Console Status */
+        /* ========================= */
+
+        if (
+            userPermission === "viewer"
+        ) {
+
+            console.log(
+                "Sentinel X RBAC: Read-Only Monitor Session"
+            );
+
+        }
+
+        else if (
+            userPermission === "analyst"
+        ) {
+
+            console.log(
+                "Sentinel X RBAC: SOC Analyst Session"
+            );
+
+        }
+
+        else if (
+            userPermission === "admin"
+        ) {
+
+            console.log(
+                "Sentinel X RBAC: Administrator Session"
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,457 @@
+/* ============================================
+   SENTINEL X - INVESTIGATION PAGE
+============================================ */
+
+.investigation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.investigation-header h1 {
+    margin: 8px 0 6px;
+    font-size: 30px;
+}
+
+.page-description {
+    margin: 0;
+    opacity: 0.72;
+}
+
+.back-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #8ea4ff;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.investigation-severity {
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* ============================================
+   DATASET STATUS
+============================================ */
+
+.dataset-status {
+    padding: 14px 18px;
+    margin-bottom: 22px;
+    border-radius: 12px;
+    background: rgba(63, 94, 251, 0.08);
+    border: 1px solid rgba(112, 136, 255, 0.18);
+    font-size: 14px;
+}
+
+
+/* ============================================
+   MAIN SECTIONS
+============================================ */
+
+.investigation-section {
+    margin-bottom: 24px;
+    padding: 22px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.section-heading > div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-heading h2 {
+    margin: 0 0 4px;
+    font-size: 19px;
+}
+
+.section-heading p {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.65;
+}
+
+.section-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(91, 116, 255, 0.12);
+    font-size: 19px;
+}
+
+
+/* ============================================
+   ALERT OVERVIEW
+============================================ */
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.overview-card {
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.overview-card span {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.overview-card strong {
+    display: block;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.risk-card strong {
+    font-size: 22px;
+}
+
+
+/* ============================================
+   RISK EXPLANATION
+============================================ */
+
+.risk-explanation {
+    display: grid;
+    gap: 12px;
+}
+
+.risk-factor {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 15px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.risk-factor-icon {
+    min-width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.risk-factor h3 {
+    margin: 0 0 5px;
+    font-size: 14px;
+}
+
+.risk-factor p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    opacity: 0.72;
+}
+
+
+/* ============================================
+   TABLE
+============================================ */
+
+.table-container {
+    overflow-x: auto;
+}
+
+.investigation-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.investigation-table th,
+.investigation-table td {
+    padding: 13px 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    font-size: 13px;
+}
+
+.investigation-table th {
+    font-size: 12px;
+    opacity: 0.65;
+    font-weight: 700;
+}
+
+.investigation-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.025);
+}
+
+
+/* ============================================
+   TARGETED DEVICES
+============================================ */
+
+.targeted-devices {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.target-device-card {
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.target-device-card h3 {
+    margin: 0 0 8px;
+    font-size: 15px;
+}
+
+.target-device-card p {
+    margin: 5px 0;
+    font-size: 13px;
+    opacity: 0.72;
+}
+
+
+/* ============================================
+   TIMELINE
+============================================ */
+
+.investigation-timeline {
+    position: relative;
+    padding-left: 20px;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 0 0 20px 24px;
+    border-left: 2px solid rgba(112, 136, 255, 0.25);
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -7px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #7186ff;
+    box-shadow: 0 0 0 4px rgba(113, 134, 255, 0.12);
+}
+
+.timeline-item h3 {
+    margin: 0 0 5px;
+    font-size: 14px;
+}
+
+.timeline-item p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    opacity: 0.7;
+}
+
+
+/* ============================================
+   SEVERITY BADGES
+============================================ */
+
+.severity-badge {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.severity-critical {
+    color: #ff7676;
+    background: rgba(255, 70, 70, 0.12);
+    border: 1px solid rgba(255, 70, 70, 0.25);
+}
+
+.severity-high {
+    color: #ffad66;
+    background: rgba(255, 145, 61, 0.12);
+    border: 1px solid rgba(255, 145, 61, 0.25);
+}
+
+.severity-medium {
+    color: #ffd86a;
+    background: rgba(255, 205, 60, 0.12);
+    border: 1px solid rgba(255, 205, 60, 0.25);
+}
+
+.severity-low {
+    color: #76e6a5;
+    background: rgba(64, 210, 125, 0.12);
+    border: 1px solid rgba(64, 210, 125, 0.25);
+}
+
+
+/* ============================================
+   RESPONSE ACTIONS
+============================================ */
+
+.response-section {
+    border-color: rgba(112, 136, 255, 0.18);
+}
+
+.response-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.action-btn {
+    border: none;
+    border-radius: 9px;
+    padding: 11px 17px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 13px;
+    transition: 0.2s ease;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.08);
+}
+
+.incident-btn {
+    background: #647cff;
+    color: white;
+}
+
+.isolate-btn {
+    background: #e05757;
+    color: white;
+}
+
+.close-btn {
+    background: rgba(255, 255, 255, 0.09);
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.action-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    transform: none;
+}
+
+.action-status {
+    margin-top: 15px;
+    padding: 12px 14px;
+    border-radius: 9px;
+    background: rgba(0, 0, 0, 0.14);
+    font-size: 13px;
+    opacity: 0.78;
+}
+
+
+/* ============================================
+   GENERAL STATES
+============================================ */
+
+.loading-card,
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.13);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+
+/* ============================================
+   FOOTER
+============================================ */
+
+.investigation-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 2px 8px;
+    font-size: 12px;
+    opacity: 0.55;
+}
+
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (max-width: 1100px) {
+
+    .overview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .targeted-devices {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+
+    .investigation-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .overview-grid,
+    .targeted-devices {
+        grid-template-columns: 1fr;
+    }
+
+    .response-actions {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+
+    .investigation-footer {
+        flex-direction: column;
+    }
+}

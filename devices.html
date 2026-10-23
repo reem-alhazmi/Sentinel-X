@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sentinel X - Devices</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/devices.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2>🛡️ Sentinel X</h2>
+
+        <ul>
+
+    <li>
+        <a href="index.html">🏠 Dashboard</a>
+    </li>
+
+    <li>
+        <a href="alerts.html">🚨 Alerts</a>
+    </li>
+
+    <li>
+        <a href="investigation.html">🔍 Investigation</a>
+    </li>
+
+    <li>
+        <a href="incidents.html">📂 Incidents</a>
+    </li>
+
+    <li>
+        <a href="employees.html">👥 Employees</a>
+    </li>
+
+    <li class="active">
+        <a href="devices.html">💻 Devices</a>
+    </li>
+
+    <li>
+        <a href="threat-hunting.html">🎯 Threat Hunting</a>
+    </li>
+
+    <li>
+        <a href="reports.html">📊 Reports</a>
+    </li>
+
+    <li>
+        <a href="settings.html">⚙️ Settings</a>
+    </li>
+
+</ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <div class="topbar-left">
+
+                <h2>Device Management</h2>
+
+                <p>
+                    Company Assets
+                    <span class="online">🟢 Online</span>
+                </p>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <span>💻 Devices: 6</span>
+
+                <span id="devicesUserName">👤 User</span>
+
+            </div>
+
+        </div>
+
+        <h1>💻 Devices</h1>
+
+        <p class="page-description">
+            Monitor all company devices connected to Sentinel X.
+        </p>
+
+        <section class="devices">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Device ID</th>
+                        <th>Type</th>
+                        <th>Owner</th>
+                        <th>Department</th>
+                        <th>Status</th>
+                        <th>Last Alert</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <!-- PC-094 -->
+
+                    <tr data-device="PC-094">
+
+                        <td>PC-094</td>
+
+                        <td>Desktop</td>
+
+                        <td>External User</td>
+
+                        <td>Unknown</td>
+
+                        <td class="status-danger">
+                            Blocked
+                        </td>
+
+                        <td>
+                            <a href="alerts.html">ALT-001</a>
+                        </td>
+
+                        <td>
+                            <button class="view-btn">View</button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- LAP-022 -->
+
+                    <tr data-device="LAP-022">
+
+                        <td>LAP-022</td>
+
+                        <td>Laptop</td>
+
+                        <td>
+                            <a href="employees.html">EMP-204</a>
+                        </td>
+
+                        <td>Finance</td>
+
+                        <td class="status-active">
+                            Online
+                        </td>
+
+                        <td>
+                            <a href="alerts.html">ALT-002</a>
+                        </td>
+
+                        <td>
+                            <button class="view-btn">View</button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- PC-011 -->
+
+                    <tr data-device="PC-011">
+
+                        <td>PC-011</td>
+
+                        <td>Desktop</td>
+
+                        <td>
+                            <a href="employees.html">Reception</a>
+                        </td>
+
+                        <td>Reception</td>
+
+                        <td class="status-active">
+                            Online
+                        </td>
+
+                        <td>
+                            <a href="alerts.html">ALT-003</a>
+                        </td>
+
+                        <td>
+                            <button class="view-btn">View</button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- SRV-003 -->
+
+                    <tr data-device="SRV-003">
+
+                        <td>SRV-003</td>
+
+                        <td>Server</td>
+
+                        <td>
+                            <a href="employees.html">Finance Team</a>
+                        </td>
+
+                        <td>Finance</td>
+
+                        <td class="status-danger">
+                            Critical
+                        </td>
+
+                        <td>
+                            <a href="alerts.html">ALT-004</a>
+                        </td>
+
+                        <td>
+                            <button class="view-btn">View</button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- LAP-015 -->
+
+                    <tr data-device="LAP-015">
+
+                        <td>LAP-015</td>
+
+                        <td>Laptop</td>
+
+                        <td>
+                            <a href="employees.html">EMP-015</a>
+                        </td>
+
+                        <td>IT</td>
+
+                        <td class="status-warning">
+                            Warning
+                        </td>
+
+                        <td>
+                            <a href="alerts.html">ALT-005</a>
+                        </td>
+
+                        <td>
+                            <button class="view-btn">View</button>
+                        </td>
+
+                    </tr>
+
+
+                    <!-- PC-028 -->
+
+                    <tr data-device="PC-028">
+
+                        <td>PC-028</td>
+
+                        <td>Desktop</td>
+
+                        <td>
+                            <a href="employees.html">EMP-028</a>
+                        </td>
+
+                        <td>Administration</td>
+
+                        <td class="status-active">
+                            Online
+                        </td>
+
+                        <td>
+                            <a href="alerts.html">ALT-006</a>
+                        </td>
+
+                        <td>
+                            <button class="view-btn">View</button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

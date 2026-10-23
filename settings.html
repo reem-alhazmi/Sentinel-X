@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sentinel X - Settings</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/settings.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- ========================= -->
+    <!-- Sidebar -->
+    <!-- ========================= -->
+
+    <aside class="sidebar">
+
+        <h2>🛡️ Sentinel X</h2>
+
+        <ul>
+
+            <li>
+                <a href="index.html">🏠 Dashboard</a>
+            </li>
+
+            <li>
+                <a href="alerts.html">🚨 Alerts</a>
+            </li>
+
+            <li>
+                <a href="investigation.html">🔍 Investigation</a>
+            </li>
+
+            <li>
+                <a href="incidents.html">📂 Incidents</a>
+            </li>
+
+            <li>
+                <a href="employees.html">👥 Employees</a>
+            </li>
+
+            <li>
+                <a href="devices.html">💻 Devices</a>
+            </li>
+
+            <li>
+                <a href="threat-hunting.html">🎯 Threat Hunting</a>
+            </li>
+
+            <li>
+                <a href="reports.html">📊 Reports</a>
+            </li>
+
+            <li>
+                <a href="settings.html" class="active">⚙️ Settings</a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- ========================= -->
+    <!-- Main Content -->
+    <!-- ========================= -->
+
+    <main class="main-content">
+
+
+        <!-- ========================= -->
+        <!-- Top Bar -->
+        <!-- ========================= -->
+
+        <div class="topbar">
+
+            <div class="topbar-left">
+
+                <h2>Security Settings</h2>
+
+                <p>
+                    Access Control & System Configuration
+                    <span class="online">🟢 Active</span>
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <span>
+                    🔐 Admin Only
+                </span>
+
+                <span id="settingsCurrentUser">
+                    👤 Administrator
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Settings Header -->
+        <!-- ========================= -->
+
+        <div class="settings-header">
+
+            <div>
+
+                <h1>
+                    ⚙️ Security Settings
+                </h1>
+
+                <p>
+                    Centralized Role-Based Access Control for Sentinel X.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Notification -->
+        <!-- ========================= -->
+
+        <div
+            id="settingsMessage"
+            class="settings-message"
+        ></div>
+
+
+        <!-- ========================= -->
+        <!-- Settings Grid -->
+        <!-- ========================= -->
+
+        <div class="settings-grid">
+
+
+            <!-- ========================= -->
+            <!-- Role Management -->
+            <!-- ========================= -->
+
+            <section class="settings-card">
+
+                <div class="settings-card-header">
+
+                    <div>
+
+                        <h2>
+                            👥 Role Management
+                        </h2>
+
+                        <p>
+                            Security roles available in Sentinel X.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="role-list"
+                    id="roleList"
+                >
+
+
+                    <!-- Administrator -->
+
+                    <div
+                        class="role-item"
+                        data-role="Administrator"
+                    >
+
+                        <div class="role-info">
+
+                            <span class="role-name">
+                                Administrator
+                            </span>
+
+                            <span class="role-description">
+                                Full system access and security configuration.
+                            </span>
+
+                        </div>
+
+                        <span class="role-badge role-admin">
+                            ADMIN
+                        </span>
+
+                    </div>
+
+
+                    <!-- SOC Analyst -->
+
+                    <div
+                        class="role-item"
+                        data-role="SOC Analyst"
+                    >
+
+                        <div class="role-info">
+
+                            <span class="role-name">
+                                SOC Analyst
+                            </span>
+
+                            <span class="role-description">
+                                Investigation and security response role.
+                            </span>
+
+                        </div>
+
+                        <span class="role-badge role-analyst">
+                            ANALYST
+                        </span>
+
+                    </div>
+
+
+                    <!-- SOC Monitor -->
+
+                    <div
+                        class="role-item"
+                        data-role="SOC Monitor"
+                    >
+
+                        <div class="role-info">
+
+                            <span class="role-name">
+                                SOC Monitor
+                            </span>
+
+                            <span class="role-description">
+                                Monitoring role with configurable operational permissions.
+                            </span>
+
+                        </div>
+
+                        <span class="role-badge role-viewer">
+                            MONITOR
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- Security Controls -->
+            <!-- ========================= -->
+
+            <section class="settings-card">
+
+                <div class="settings-card-header">
+
+                    <div>
+
+                        <h2>
+                            🛡️ Security Controls
+                        </h2>
+
+                        <p>
+                            Configure important Sentinel X protections.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="security-options">
+
+
+                    <!-- MFA -->
+
+                    <div class="security-option">
+
+                        <div class="security-option-info">
+
+                            <span class="security-option-title">
+                                Multi-Factor Authentication
+                            </span>
+
+                            <span class="security-option-description">
+                                Require MFA for privileged accounts.
+                            </span>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="mfaSetting"
+                                checked
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- Auto Isolation -->
+
+                    <div class="security-option">
+
+                        <div class="security-option-info">
+
+                            <span class="security-option-title">
+                                Automatic Device Isolation
+                            </span>
+
+                            <span class="security-option-description">
+                                Automatically isolate critical devices.
+                            </span>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="autoIsolationSetting"
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- Notifications -->
+
+                    <div class="security-option">
+
+                        <div class="security-option-info">
+
+                            <span class="security-option-title">
+                                Critical Alert Notifications
+                            </span>
+
+                            <span class="security-option-description">
+                                Notify SOC users when critical alerts appear.
+                            </span>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="notificationSetting"
+                                checked
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- Session Timeout -->
+
+                    <div class="security-option">
+
+                        <div class="security-option-info">
+
+                            <span class="security-option-title">
+                                Session Timeout
+                            </span>
+
+                            <span class="security-option-description">
+                                Automatically expire inactive sessions.
+                            </span>
+
+                        </div>
+
+
+                        <select
+                            class="setting-select"
+                            id="sessionTimeout"
+                        >
+
+                            <option value="15">
+                                15 Minutes
+                            </option>
+
+                            <option
+                                value="30"
+                                selected
+                            >
+                                30 Minutes
+                            </option>
+
+                            <option value="60">
+                                1 Hour
+                            </option>
+
+                            <option value="120">
+                                2 Hours
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- Permission Matrix -->
+            <!-- ========================= -->
+
+            <section class="settings-card full-width">
+
+                <div class="settings-card-header">
+
+                    <div>
+
+                        <h2>
+                            🔐 Role Permissions Management
+                        </h2>
+
+                        <p>
+                            Administrator controls what each Sentinel X role
+                            can view or perform.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="permissions-wrapper">
+
+                    <table class="permissions-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Permission
+                                </th>
+
+                                <th>
+                                    Administrator 🔒
+                                </th>
+
+                                <th>
+                                    SOC Analyst
+                                </th>
+
+                                <th>
+                                    SOC Monitor
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <!-- Dashboard -->
+
+                            <tr>
+
+                                <td>
+                                    🏠 View Dashboard
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewDashboard"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewDashboard"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewDashboard"
+                                        data-role="viewer"
+                                        checked
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- View Alerts -->
+
+                            <tr>
+
+                                <td>
+                                    🚨 View Alerts
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewAlerts"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewAlerts"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewAlerts"
+                                        data-role="viewer"
+                                        checked
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Investigate Alerts -->
+
+                            <tr>
+
+                                <td>
+                                    🔍 Investigate Alerts
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="investigateAlerts"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="investigateAlerts"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="investigateAlerts"
+                                        data-role="viewer"
+                                        checked
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Block Alerts -->
+
+                            <tr>
+
+                                <td>
+                                    🚫 Block Alert
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="blockAlert"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="blockAlert"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="blockAlert"
+                                        data-role="viewer"
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Ignore Alerts -->
+
+                            <tr>
+
+                                <td>
+                                    🙈 Ignore Alert
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="ignoreAlert"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="ignoreAlert"
+                                        data-role="analyst"
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="ignoreAlert"
+                                        data-role="viewer"
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- View Investigation -->
+
+                            <tr>
+
+                                <td>
+                                    🔎 View Investigation
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewInvestigation"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewInvestigation"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewInvestigation"
+                                        data-role="viewer"
+                                        checked
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Create Incident -->
+
+                            <tr>
+
+                                <td>
+                                    ➕ Create Incident
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="createIncident"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="createIncident"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="createIncident"
+                                        data-role="viewer"
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Isolate Device -->
+
+                            <tr>
+
+                                <td>
+                                    🔒 Isolate Device
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="isolateDevice"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="isolateDevice"
+                                        data-role="analyst"
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="isolateDevice"
+                                        data-role="viewer"
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- View Incidents -->
+
+                            <tr>
+
+                                <td>
+                                    📂 View Incidents
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewIncidents"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewIncidents"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewIncidents"
+                                        data-role="viewer"
+                                        checked
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Contain Incident -->
+
+                            <tr>
+
+                                <td>
+                                    🛡️ Contain Incident
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="containIncident"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="containIncident"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="containIncident"
+                                        data-role="viewer"
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Resolve Incident -->
+
+                            <tr>
+
+                                <td>
+                                    ✅ Resolve Incident
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="resolveIncident"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="resolveIncident"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="resolveIncident"
+                                        data-role="viewer"
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Close Incident -->
+
+                            <tr>
+
+                                <td>
+                                    ❌ Close Incident
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="closeIncident"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="closeIncident"
+                                        data-role="analyst"
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="closeIncident"
+                                        data-role="viewer"
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Employees -->
+
+                            <tr>
+
+                                <td>
+                                    👥 View Employees
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewEmployees"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewEmployees"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewEmployees"
+                                        data-role="viewer"
+                                        checked
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Devices -->
+
+                            <tr>
+
+                                <td>
+                                    💻 View Devices
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewDevices"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewDevices"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewDevices"
+                                        data-role="viewer"
+                                        checked
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Threat Hunting -->
+
+                            <tr>
+
+                                <td>
+                                    🎯 Threat Hunting
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="threatHunting"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="threatHunting"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="threatHunting"
+                                        data-role="viewer"
+                                        checked
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Reports -->
+
+                            <tr>
+
+                                <td>
+                                    📊 View Reports
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewReports"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewReports"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="viewReports"
+                                        data-role="viewer"
+                                        checked
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Generate Reports -->
+
+                            <tr>
+
+                                <td>
+                                    📝 Generate Reports
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="generateReports"
+                                        data-role="admin"
+                                        checked
+                                        disabled
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="generateReports"
+                                        data-role="analyst"
+                                        checked
+                                    >
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        class="permission-checkbox"
+                                        data-permission="generateReports"
+                                        data-role="viewer"
+                                    >
+                                </td>
+
+                            </tr>
+
+
+                            <!-- Settings -->
+
+                            <tr>
+
+                                <td>
+                                    ⚙️ Access Security Settings
+                                </td>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        checked
+                                        disabled
+                                    >
+                                    🔒
+                                </td>
+
+                                <td>
+                                    🚫 Admin Only
+                                </td>
+
+                                <td>
+                                    🚫 Admin Only
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="permissions-actions">
+
+    <div class="permissions-auto-save">
+        🟢 Auto Save Active
+        <span>
+            Permission changes are saved automatically.
+        </span>
+    </div>
+
+</div>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- Audit Log -->
+            <!-- ========================= -->
+
+            <section class="settings-card full-width">
+
+                <div class="settings-card-header">
+
+                    <div>
+
+                        <h2>
+                            📜 Security Audit Log
+                        </h2>
+
+                        <p>
+                            Recent administrative and permission changes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="audit-log"
+                    id="auditLog"
+                >
+
+                    <div class="audit-item">
+
+                        <div class="audit-info">
+
+                            <span class="audit-action">
+                                Sentinel X RBAC initialized
+                            </span>
+
+                            <span class="audit-user">
+                                👤 Administrator
+                            </span>
+
+                        </div>
+
+                        <span class="audit-time">
+                            System initialized
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- Shared JavaScript -->
+<!-- ========================= -->
+
+<script src="script.js"></script>
+
+
+<!-- ========================= -->
+<!-- Settings RBAC Controller -->
+<!-- ========================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =====================================================
+       SESSION / ADMIN PROTECTION
+       ===================================================== */
+
+    let session = null;
+
+    try {
+
+        const storedSession =
+            localStorage.getItem("sentinelXSession");
+
+        if (storedSession) {
+            session = JSON.parse(storedSession);
+        }
+
+    } catch (error) {
+
+        session = null;
+
+    }
+
+
+    if (
+        !session ||
+        session.authenticated !== true
+    ) {
+
+        window.location.href = "login.html";
+        return;
+
+    }
+
+
+    /* Settings = ADMIN ONLY */
+
+    if (session.permission !== "admin") {
+
+        alert(
+            "Restricted Access\n\n" +
+            "Security Settings are available to the Administrator only."
+        );
+
+        window.location.href = "index.html";
+        return;
+
+    }
+
+
+    /* =====================================================
+       CURRENT USER
+       ===================================================== */
+
+    const currentUser =
+        document.getElementById("settingsCurrentUser");
+
+    if (currentUser) {
+
+        currentUser.textContent =
+            "👤 " +
+            (
+                session.name ||
+                session.role ||
+                "Administrator"
+            );
+
+    }
+
+
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
+
+    const permissionCheckboxes =
+        document.querySelectorAll(
+            ".permission-checkbox"
+        );
+
+    const savePermissionsBtn =
+        document.getElementById(
+            "savePermissionsBtn"
+        );
+
+    const settingsMessage =
+        document.getElementById(
+            "settingsMessage"
+        );
+
+    const auditLog =
+        document.getElementById(
+            "auditLog"
+        );
+
+    const mfaSetting =
+        document.getElementById(
+            "mfaSetting"
+        );
+
+    const autoIsolationSetting =
+        document.getElementById(
+            "autoIsolationSetting"
+        );
+
+    const notificationSetting =
+        document.getElementById(
+            "notificationSetting"
+        );
+
+    const sessionTimeout =
+        document.getElementById(
+            "sessionTimeout"
+        );
+
+
+    /* =====================================================
+       DEFAULT ROLE PERMISSIONS
+       ===================================================== */
+
+    const defaultPermissions = {
+
+        admin: {
+
+            viewDashboard: true,
+            viewAlerts: true,
+            investigateAlerts: true,
+            blockAlert: true,
+            ignoreAlert: true,
+
+            viewInvestigation: true,
+            createIncident: true,
+            isolateDevice: true,
+
+            viewIncidents: true,
+            containIncident: true,
+            resolveIncident: true,
+            closeIncident: true,
+
+            viewEmployees: true,
+            viewDevices: true,
+
+            threatHunting: true,
+
+            viewReports: true,
+            generateReports: true,
+
+            accessSettings: true
+
+        },
+
+
+        analyst: {
+
+            viewDashboard: true,
+
+            viewAlerts: true,
+            investigateAlerts: true,
+            blockAlert: true,
+            ignoreAlert: false,
+
+            viewInvestigation: true,
+            createIncident: true,
+            isolateDevice: false,
+
+            viewIncidents: true,
+            containIncident: true,
+            resolveIncident: true,
+            closeIncident: false,
+
+            viewEmployees: true,
+            viewDevices: true,
+
+            threatHunting: true,
+
+            viewReports: true,
+            generateReports: true,
+
+            accessSettings: false
+
+        },
+
+
+        viewer: {
+
+            viewDashboard: true,
+
+            viewAlerts: true,
+            investigateAlerts: true,
+            blockAlert: false,
+            ignoreAlert: false,
+
+            viewInvestigation: true,
+            createIncident: false,
+            isolateDevice: false,
+
+            viewIncidents: true,
+            containIncident: false,
+            resolveIncident: false,
+            closeIncident: false,
+
+            viewEmployees: true,
+            viewDevices: true,
+
+            threatHunting: true,
+
+            viewReports: true,
+            generateReports: false,
+
+            accessSettings: false
+
+        }
+
+    };
+
+
+    /* =====================================================
+       LOAD SAVED PERMISSIONS
+       ===================================================== */
+
+    let rolePermissions = null;
+
+    try {
+
+        const storedPermissions =
+            localStorage.getItem(
+                "sentinelXRolePermissions"
+            );
+
+        if (storedPermissions) {
+
+            rolePermissions =
+                JSON.parse(storedPermissions);
+
+        }
+
+    } catch (error) {
+
+        rolePermissions = null;
+
+    }
+
+
+    if (!rolePermissions) {
+
+        rolePermissions =
+            JSON.parse(
+                JSON.stringify(
+                    defaultPermissions
+                )
+            );
+
+        localStorage.setItem(
+            "sentinelXRolePermissions",
+            JSON.stringify(
+                rolePermissions
+            )
+        );
+
+    }
+
+
+    /* =====================================================
+       FORCE ADMIN FULL ACCESS
+       ===================================================== */
+
+    rolePermissions.admin =
+        JSON.parse(
+            JSON.stringify(
+                defaultPermissions.admin
+            )
+        );
+
+
+    rolePermissions.admin.accessSettings = true;
+
+    rolePermissions.analyst.accessSettings = false;
+    rolePermissions.viewer.accessSettings = false;
+
+
+    /* =====================================================
+       RESTORE CHECKBOXES
+       ===================================================== */
+
+    permissionCheckboxes.forEach(
+        function (checkbox) {
+
+            const role =
+                checkbox.dataset.role;
+
+            const permission =
+                checkbox.dataset.permission;
+
+
+            if (
+                role === "admin"
+            ) {
+
+                checkbox.checked = true;
+                checkbox.disabled = true;
+
+                return;
+
+            }
+
+
+            if (
+                rolePermissions[role] &&
+                typeof rolePermissions[role][permission]
+                    === "boolean"
+            ) {
+
+                checkbox.checked =
+                    rolePermissions[role][permission];
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       SECURITY SETTINGS
+       ===================================================== */
+
+    const defaultSecuritySettings = {
+
+        mfa: true,
+        autoIsolation: false,
+        notifications: true,
+        sessionTimeout: "30"
+
+    };
+
+
+    let securitySettings = null;
+
+
+    try {
+
+        const storedSecuritySettings =
+            localStorage.getItem(
+                "sentinelXSecuritySettings"
+            );
+
+        if (storedSecuritySettings) {
+
+            securitySettings =
+                JSON.parse(
+                    storedSecuritySettings
+                );
+
+        }
+
+    } catch (error) {
+
+        securitySettings = null;
+
+    }
+
+
+    if (!securitySettings) {
+
+        securitySettings =
+            defaultSecuritySettings;
+
+    }
+
+
+    if (mfaSetting) {
+
+        mfaSetting.checked =
+            securitySettings.mfa !== false;
+
+    }
+
+
+    if (autoIsolationSetting) {
+
+        autoIsolationSetting.checked =
+            securitySettings.autoIsolation === true;
+
+    }
+
+
+    if (notificationSetting) {
+
+        notificationSetting.checked =
+            securitySettings.notifications !== false;
+
+    }
+
+
+    if (sessionTimeout) {
+
+        sessionTimeout.value =
+            securitySettings.sessionTimeout || "30";
+
+    }
+
+
+    /* =====================================================
+       MESSAGE
+       ===================================================== */
+
+    function showSettingsMessage(
+        message,
+        type
+    ) {
+
+        if (!settingsMessage) {
+            return;
+        }
+
+        settingsMessage.textContent =
+            message;
+
+        settingsMessage.className =
+            "settings-message " +
+            (type || "");
+
+        setTimeout(
+            function () {
+
+                settingsMessage.textContent =
+                    "";
+
+                settingsMessage.className =
+                    "settings-message";
+
+            },
+            3500
+        );
+
+    }
+
+
+    /* =====================================================
+       AUDIT LOG
+       ===================================================== */
+
+    function addAuditEntry(
+        action
+    ) {
+
+        if (!auditLog) {
+            return;
+        }
+
+
+        const auditItem =
+            document.createElement("div");
+
+        auditItem.className =
+            "audit-item";
+
+
+        const currentTime =
+            new Date().toLocaleString();
+
+
+        auditItem.innerHTML = `
+
+            <div class="audit-info">
+
+                <span class="audit-action">
+                    ${action}
+                </span>
+
+                <span class="audit-user">
+                    👤 ${session.name || "Administrator"}
+                </span>
+
+            </div>
+
+            <span class="audit-time">
+                ${currentTime}
+            </span>
+
+        `;
+
+
+        auditLog.prepend(
+            auditItem
+        );
+
+    }
+
+
+    /* =====================================================
+       SAVE PERMISSIONS
+       ===================================================== */
+
+    if (savePermissionsBtn) {
+
+        savePermissionsBtn.addEventListener(
+            "click",
+            function () {
+
+                const newPermissions =
+                    JSON.parse(
+                        JSON.stringify(
+                            rolePermissions
+                        )
+                    );
+
+
+                permissionCheckboxes.forEach(
+                    function (checkbox) {
+
+                        const role =
+                            checkbox.dataset.role;
+
+                        const permission =
+                            checkbox.dataset.permission;
+
+
+                        if (
+                            role === "admin"
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        if (
+                            !newPermissions[role]
+                        ) {
+
+                            newPermissions[role] = {};
+
+                        }
+
+
+                        newPermissions[role][permission] =
+                            checkbox.checked;
+
+                    }
+                );
+
+
+                /* Admin can never lose access */
+
+                newPermissions.admin =
+                    JSON.parse(
+                        JSON.stringify(
+                            defaultPermissions.admin
+                        )
+                    );
+
+
+                /* Settings can never be assigned
+                   to Analyst or Monitor */
+
+                newPermissions.analyst.accessSettings =
+                    false;
+
+                newPermissions.viewer.accessSettings =
+                    false;
+
+
+                rolePermissions =
+                    newPermissions;
+
+
+                localStorage.setItem(
+                    "sentinelXRolePermissions",
+                    JSON.stringify(
+                        rolePermissions
+                    )
+                );
+
+
+                const newSecuritySettings = {
+
+                    mfa:
+                        mfaSetting
+                            ? mfaSetting.checked
+                            : true,
+
+                    autoIsolation:
+                        autoIsolationSetting
+                            ? autoIsolationSetting.checked
+                            : false,
+
+                    notifications:
+                        notificationSetting
+                            ? notificationSetting.checked
+                            : true,
+
+                    sessionTimeout:
+                        sessionTimeout
+                            ? sessionTimeout.value
+                            : "30"
+
+                };
+
+
+                localStorage.setItem(
+                    "sentinelXSecuritySettings",
+                    JSON.stringify(
+                        newSecuritySettings
+                    )
+                );
+
+
+                showSettingsMessage(
+                    "✅ Role permissions saved successfully.",
+                    "success"
+                );
+
+
+                addAuditEntry(
+                    "Role permissions updated"
+                );
+
+
+                savePermissionsBtn.disabled =
+                    true;
+
+                savePermissionsBtn.textContent =
+                    "✅ Permissions Saved";
+
+
+                setTimeout(
+                    function () {
+
+                        savePermissionsBtn.disabled =
+                            false;
+
+                        savePermissionsBtn.textContent =
+                            "💾 Save Permissions";
+
+                    },
+                    1200
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       GLOBAL PERMISSION FUNCTION
+       ===================================================== */
+
+    window.sentinelHasPermission =
+        function (permissionName) {
+
+            let currentSession = null;
+
+            try {
+
+                currentSession =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "sentinelXSession"
+                        )
+                    );
+
+            } catch (error) {
+
+                return false;
+
+            }
+
+
+            if (
+                !currentSession ||
+                currentSession.authenticated !== true
+            ) {
+
+                return false;
+
+            }
+
+
+            /* Administrator always has access */
+
+            if (
+                currentSession.permission === "admin"
+            ) {
+
+                return true;
+
+            }
+
+
+            let permissions = null;
+
+
+            try {
+
+                permissions =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "sentinelXRolePermissions"
+                        )
+                    );
+
+            } catch (error) {
+
+                return false;
+
+            }
+
+
+            if (
+                !permissions ||
+                !permissions[
+                    currentSession.permission
+                ]
+            ) {
+
+                return false;
+
+            }
+
+
+            return (
+                permissions[
+                    currentSession.permission
+                ][permissionName] === true
+            );
+
+        };
+
+
+});
+
+</script>
+
+</body>
+
+</html>

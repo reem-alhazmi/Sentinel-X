@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sentinel X - Security Reports</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reports.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- ========================= -->
+    <!-- Sidebar -->
+    <!-- ========================= -->
+
+    <aside class="sidebar">
+
+        <h2>🛡️ Sentinel X</h2>
+
+        <ul>
+
+    <li>
+        <a href="index.html">🏠 Dashboard</a>
+    </li>
+
+    <li>
+        <a href="alerts.html">🚨 Alerts</a>
+    </li>
+
+    <li>
+        <a href="investigation.html">🔍 Investigation</a>
+    </li>
+
+    <li>
+        <a href="incidents.html">📂 Incidents</a>
+    </li>
+
+    <li>
+        <a href="employees.html">👥 Employees</a>
+    </li>
+
+    <li>
+        <a href="devices.html">💻 Devices</a>
+    </li>
+
+    <li>
+        <a href="threat-hunting.html">🎯 Threat Hunting</a>
+    </li>
+
+    <li class="active">
+        <a href="reports.html">📊 Reports</a>
+    </li>
+
+    <li>
+        <a href="settings.html">⚙️ Settings</a>
+    </li>
+
+</ul>
+
+    </aside>
+
+
+    <!-- ========================= -->
+    <!-- Main Content -->
+    <!-- ========================= -->
+
+    <main class="main-content">
+
+        <!-- ========================= -->
+        <!-- Top Bar -->
+        <!-- ========================= -->
+
+        <div class="topbar">
+
+            <div class="topbar-left">
+
+                <h2>Security Reports</h2>
+
+                <p>
+                    SOC Intelligence & Analysis
+                    <span class="online">
+                        🟢 Active
+                    </span>
+                </p>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <span>
+                    📊 Reports Center
+                </span>
+
+                <span id="reportsUserName">
+    👤 User
+</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Page Header -->
+        <!-- ========================= -->
+
+        <div class="reports-header">
+
+            <div>
+
+                <h1>
+                    📊 Security Reports
+                </h1>
+
+                <p class="page-description">
+                    Generate detailed security reports for devices,
+                    employees and incidents monitored by Sentinel X.
+                </p>
+
+            </div>
+
+            <div class="reports-status">
+                ● SOC DATA READY
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Report Generator -->
+        <!-- ========================= -->
+
+        <section class="report-generator">
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        🧾 Generate Security Report
+                    </h2>
+
+                    <p>
+                        Select a report category and target to begin analysis.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-form">
+
+                <!-- Report Type -->
+
+                <div class="report-field">
+
+                    <label for="reportType">
+                        Report Type
+                    </label>
+
+                    <select id="reportType">
+
+                        <option value="">
+                            Select report type
+                        </option>
+
+                        <option value="device">
+                            💻 Device Security Report
+                        </option>
+
+                        <option value="employee">
+                            👤 Employee Security Report
+                        </option>
+
+                        <option value="incident">
+                            🚨 Incident Investigation Report
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Target -->
+
+                <div class="report-field">
+
+                    <label for="reportTarget">
+                        Target
+                    </label>
+
+                    <select id="reportTarget" disabled>
+
+                        <option value="">
+                            Select report type first
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Generate -->
+
+                <div class="report-button-field">
+
+                    <button id="generateReportBtn" disabled>
+                        📊 Generate Report
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Report Summary Cards -->
+        <!-- ========================= -->
+
+        <section
+            id="reportSummary"
+            class="report-summary hidden"
+        >
+
+            <div class="report-card">
+
+                <span class="report-card-icon">
+                    🎯
+                </span>
+
+                <div>
+
+                    <span class="report-card-label">
+                        Target
+                    </span>
+
+                    <strong id="reportTargetValue">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-card">
+
+                <span class="report-card-icon">
+                    🚨
+                </span>
+
+                <div>
+
+                    <span class="report-card-label">
+                        Alerts
+                    </span>
+
+                    <strong id="reportAlertCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-card">
+
+                <span class="report-card-icon">
+                    📂
+                </span>
+
+                <div>
+
+                    <span class="report-card-label">
+                        Incidents
+                    </span>
+
+                    <strong id="reportIncidentCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-card">
+
+                <span class="report-card-icon">
+                    ⚠️
+                </span>
+
+                <div>
+
+                    <span class="report-card-label">
+                        Risk Level
+                    </span>
+
+                    <strong id="reportRiskLevel">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Generated Report -->
+        <!-- ========================= -->
+
+        <section
+            id="generatedReport"
+            class="generated-report hidden"
+        >
+
+            <div class="generated-report-header">
+
+                <div>
+
+                    <span class="report-label">
+                        SENTINEL X SECURITY REPORT
+                    </span>
+
+                    <h2 id="generatedReportTitle">
+                        Security Analysis
+                    </h2>
+
+                    <p id="generatedReportSubtitle">
+                        Security monitoring report
+                    </p>
+
+                </div>
+
+
+                <div class="report-id-box">
+
+                    <span>
+                        REPORT ID
+                    </span>
+
+                    <strong id="generatedReportID">
+                        RPT-0000
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Target Information -->
+
+            <div class="report-section">
+
+                <h3>
+                    🎯 Target Information
+                </h3>
+
+                <div
+                    id="reportTargetDetails"
+                    class="report-details-grid"
+                >
+                </div>
+
+            </div>
+
+
+            <!-- Security Activity -->
+
+            <div class="report-section">
+
+                <h3>
+                    🚨 Security Activity
+                </h3>
+
+                <div
+                    id="reportSecurityActivity"
+                    class="report-activity-list"
+                >
+                </div>
+
+            </div>
+
+
+            <!-- Response Actions -->
+
+            <div class="report-section">
+
+                <h3>
+                    🛡️ Security Response
+                </h3>
+
+                <div
+                    id="reportResponseActions"
+                    class="report-response"
+                >
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- AI Analysis -->
+            <!-- ========================= -->
+
+            <div class="report-section ai-report-section">
+
+                <div class="ai-report-header">
+
+                    <div>
+
+                        <span class="ai-badge">
+                            AI
+                        </span>
+
+                        <h3>
+                            Sentinel AI Security Analysis
+                        </h3>
+
+                    </div>
+
+                    <span class="ai-status">
+                        ● READY
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="aiReportContent"
+                    class="ai-report-content"
+                >
+
+                    <div class="ai-placeholder">
+
+                        <span>
+                            🤖
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                AI analysis is ready
+                            </strong>
+
+                            <p>
+                                Generate a security report to analyze
+                                the selected security data.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- Report Actions -->
+            <!-- ========================= -->
+
+            <div class="report-actions">
+
+                <button id="analyzeReportBtn">
+                    🤖 Analyze with AI
+                </button>
+
+                <button id="printReportBtn">
+                    🖨️ Print Report
+                </button>
+
+                <button id="newReportBtn">
+                    ＋ New Report
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Initial Empty State -->
+        <!-- ========================= -->
+
+        <section
+            id="reportEmptyState"
+            class="report-empty-state"
+        >
+
+            <div class="empty-report-icon">
+                📊
+            </div>
+
+            <h2>
+                No Report Generated
+            </h2>
+
+            <p>
+                Select a report type and target above to generate
+                a Sentinel X security report.
+            </p>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

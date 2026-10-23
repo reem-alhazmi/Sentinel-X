@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sentinel X - Security Alerts</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/alerts.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- ========================= -->
+    <!-- Sidebar -->
+    <!-- ========================= -->
+
+    <aside class="sidebar">
+
+        <h2>🛡️ Sentinel X</h2>
+
+        <ul>
+
+    <li>
+        <a href="index.html">🏠 Dashboard</a>
+    </li>
+
+    <li class="active">
+        <a href="alerts.html">🚨 Alerts</a>
+    </li>
+
+    <li>
+        <a href="investigation.html">🔍 Investigation</a>
+    </li>
+
+    <li>
+        <a href="incidents.html">📂 Incidents</a>
+    </li>
+
+    <li>
+        <a href="employees.html">👥 Employees</a>
+    </li>
+
+    <li>
+        <a href="devices.html">💻 Devices</a>
+    </li>
+
+    <li>
+        <a href="threat-hunting.html">🎯 Threat Hunting</a>
+    </li>
+
+    <li>
+        <a href="reports.html">📊 Reports</a>
+    </li>
+
+    <li>
+        <a href="settings.html">⚙️ Settings</a>
+    </li>
+
+</ul>
+
+    </aside>
+
+
+    <!-- ========================= -->
+    <!-- Main Content -->
+    <!-- ========================= -->
+
+    <main class="main-content">
+
+
+        <!-- ========================= -->
+        <!-- Topbar -->
+        <!-- ========================= -->
+
+        <div class="topbar">
+
+            <div class="topbar-left">
+
+              <h2 id="alertsWelcome">Welcome</h2>
+
+                <p>
+                    System Status:
+                    <span class="online">
+                        🟢 Online
+                    </span>
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <span id="topAlertCount">
+                    🔔 Alerts: 0
+                </span>
+
+                <span id="alertsUserName">
+    👤 User
+</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Page Header -->
+        <!-- ========================= -->
+
+        <div class="alerts-header">
+
+            <div>
+
+                <h1>🚨 Security Alerts</h1>
+
+                <p class="page-description">
+                    Monitor, investigate, and respond to security events detected by Sentinel X.
+                </p>
+
+            </div>
+
+
+            <!-- Dynamic Summary -->
+
+            <div class="alert-summary">
+
+                <div class="summary-item high-summary">
+                    <strong id="highAlertCount">0</strong>
+                    <span>High Risk</span>
+                </div>
+
+                <div class="summary-item medium-summary">
+                    <strong id="mediumAlertCount">0</strong>
+                    <span>Medium</span>
+                </div>
+
+                <div class="summary-item low-summary">
+                    <strong id="lowAlertCount">0</strong>
+                    <span>Low</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Alert Toolbar -->
+        <!-- ========================= -->
+
+        <div class="alert-toolbar">
+
+            <div class="alert-toolbar-title">
+
+                <span>🔎</span>
+
+                <strong>
+                    Live Security Events
+                </strong>
+
+            </div>
+
+
+            <div class="alert-status-indicator">
+
+                <span class="pulse"></span>
+
+                Monitoring
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Dataset Information -->
+        <!-- ========================= -->
+
+        <div id="datasetStatus">
+
+            🛡️ Loading Sentinel X security dataset...
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Dynamic Alerts Container -->
+        <!-- ========================= -->
+
+        <section id="datasetAlertsContainer">
+
+            <!--
+                CIC-IDS alerts will be generated
+                automatically by JavaScript.
+            -->
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Footer -->
+        <!-- ========================= -->
+
+        <div class="alerts-footer">
+
+            <span>
+                🛡️ Sentinel X Security Monitoring
+            </span>
+
+            <span id="lastRefresh">
+                Last refresh: Just now
+            </span>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

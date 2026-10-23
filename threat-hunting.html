@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sentinel X - Threat Hunting</title>
+
+    <!-- Main Styles -->
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <!-- Threat Hunting Styles -->
+    <link
+        rel="stylesheet"
+        href="css/threat-hunting.css"
+    >
+</head>
+
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- ========================= -->
+        <!-- Sidebar -->
+        <!-- ========================= -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                🛡️ Sentinel X
+            </div>
+
+            <nav>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            🏠 Dashboard
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="alerts.html">
+                            🚨 Alerts
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="investigation.html">
+                            🔍 Investigation
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="incidents.html">
+                            📂 Incidents
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="employees.html">
+                            👥 Employees
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="devices.html">
+                            💻 Devices
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="threat-hunting.html">
+                            🎯 Threat Hunting
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="reports.html">
+                            📊 Reports
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="settings.html">
+                            ⚙️ Settings
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- ========================= -->
+        <!-- Main Content -->
+        <!-- ========================= -->
+
+        <main class="main-content">
+
+            <!-- ========================= -->
+            <!-- Top Bar -->
+            <!-- ========================= -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>
+                        Threat Hunting
+                    </h1>
+
+                    <p>
+                        Proactively search Sentinel X security data
+                        for suspicious activity and attack patterns.
+                    </p>
+
+                </div>
+
+                <div class="system-status">
+                    🟢 Dataset Connected
+                </div>
+
+            </header>
+
+
+            <!-- ========================= -->
+            <!-- Hunting Workspace -->
+            <!-- ========================= -->
+
+            <section class="hunting-workspace">
+
+                <div class="section-title">
+
+                    <div>
+                        <h2>
+                            🔍 Threat Hunting Workspace
+                        </h2>
+
+                        <p>
+                            Search and filter CIC-IDS security records.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Search -->
+
+                <div class="hunt-search">
+
+                    <input
+                        type="text"
+                        id="huntSearch"
+                        placeholder="Search Source IP, Device, Employee or Attack Type..."
+                    >
+
+                    <button id="huntSearchBtn">
+                        🔍 Hunt
+                    </button>
+
+                    <button id="huntResetBtn">
+                        Reset
+                    </button>
+
+                </div>
+
+
+                <!-- Filters -->
+
+                <div class="hunt-filters">
+
+                    <div class="hunt-filter">
+
+                        <label for="huntAttackType">
+                            Attack Type
+                        </label>
+
+                        <select id="huntAttackType">
+
+                            <option value="all">
+                                All Attack Types
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="hunt-filter">
+
+                        <label for="huntRiskLevel">
+                            Risk Level
+                        </label>
+
+                        <select id="huntRiskLevel">
+
+                            <option value="all">
+                                All Risk Levels
+                            </option>
+
+                            <option value="critical">
+                                Critical
+                            </option>
+
+                            <option value="high">
+                                High
+                            </option>
+
+                            <option value="medium">
+                                Medium
+                            </option>
+
+                            <option value="low">
+                                Low
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="hunt-filter">
+
+                        <label for="huntSourceType">
+                            Source Type
+                        </label>
+
+                        <select id="huntSourceType">
+
+                            <option value="all">
+                                All Sources
+                            </option>
+
+                            <option value="External">
+                                External
+                            </option>
+
+                            <option value="Internal">
+                                Internal
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- Hunt Summary -->
+            <!-- ========================= -->
+
+            <section class="hunt-summary">
+
+                <div class="summary-card">
+
+                    <span>
+                        Matching Records
+                    </span>
+
+                    <strong id="huntMatchingRecords">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <span>
+                        Source IPs
+                    </span>
+
+                    <strong id="huntSourceCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <span>
+                        Targeted Devices
+                    </span>
+
+                    <strong id="huntDeviceCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <span>
+                        Highest Risk
+                    </span>
+
+                    <strong id="huntHighestRisk">
+                        0/100
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <span>
+                        Most Common Attack
+                    </span>
+
+                    <strong id="huntCommonAttack">
+                        -
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================= -->
+            <!-- Hunting Results -->
+            <!-- ========================= -->
+
+            <section class="hunting-results">
+
+                <div class="section-title">
+
+                    <div>
+
+                        <h2>
+                            🎯 Hunting Results
+                        </h2>
+
+                        <p id="huntResultMessage">
+                            Run a hunt to analyze security records.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="hunt-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Record
+                                </th>
+
+                                <th>
+                                    Source IP
+                                </th>
+
+                                <th>
+                                    Attack Type
+                                </th>
+
+                                <th>
+                                    Employee
+                                </th>
+
+                                <th>
+                                    Target Device
+                                </th>
+
+                                <th>
+                                    Source
+                                </th>
+
+                                <th>
+                                    Risk
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="huntResultsBody">
+
+                            <tr class="hunt-empty-row">
+
+                                <td colspan="8">
+
+                                    🔍 No hunt has been executed yet.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Shared JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

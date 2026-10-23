@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sentinel X - Investigation</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/investigation.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- ========================= -->
+    <!-- Sidebar -->
+    <!-- ========================= -->
+
+    <aside class="sidebar">
+
+        <h2>🛡️ Sentinel X</h2>
+
+        <ul>
+
+            <li>
+                <a href="index.html">🏠 Dashboard</a>
+            </li>
+
+            <li>
+                <a href="alerts.html">🚨 Alerts</a>
+            </li>
+
+            <li class="active">
+                <a href="investigation.html">🔍 Investigation</a>
+            </li>
+
+            <li>
+                <a href="incidents.html">📂 Incidents</a>
+            </li>
+
+            <li>
+                <a href="employees.html">👥 Employees</a>
+            </li>
+
+            <li>
+    <a href="devices.html">💻 Devices</a>
+</li>
+
+<li>
+    <a href="threat-hunting.html">🎯 Threat Hunting</a>
+</li>
+
+<li>
+    <a href="reports.html">📊 Reports</a>
+</li>
+
+            <li>
+                <a href="settings.html">⚙️ Settings</a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- ========================= -->
+    <!-- Main Content -->
+    <!-- ========================= -->
+
+    <main class="main-content">
+
+        <!-- ========================= -->
+        <!-- Topbar -->
+        <!-- ========================= -->
+
+        <div class="topbar">
+
+            <div class="topbar-left">
+
+                <h2 id="investigationWelcome">Welcome</h2>
+
+                <p>
+                    System Status:
+                    <span class="online">
+                        🟢 Online
+                    </span>
+                </p>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <span id="investigationAlertId">
+                    🔍 Investigation
+                </span>
+
+                <span id="currentUserRole">
+    👤 User
+</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Page Header -->
+        <!-- ========================= -->
+
+        <div class="investigation-header">
+
+            <div>
+                <a href="alerts.html" class="back-link">
+                    ← Back to Security Alerts
+                </a>
+
+                <h1>🔍 Security Investigation</h1>
+
+                <p class="page-description">
+                    Analyze security activity, related events, affected assets, and risk indicators.
+                </p>
+            </div>
+
+            <div id="investigationSeverity" class="investigation-severity">
+                Loading...
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Dataset Status -->
+        <!-- ========================= -->
+
+        <div id="investigationDatasetStatus" class="dataset-status">
+            🛡️ Loading investigation data from CIC-IDS dataset...
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Alert Overview -->
+        <!-- ========================= -->
+
+        <section class="investigation-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-icon">🚨</span>
+                    <div>
+                        <h2>Alert Overview</h2>
+                        <p>Primary security event selected for investigation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="investigationOverview" class="overview-grid">
+
+                <div class="loading-card">
+                    Loading alert information...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Risk Explanation -->
+        <!-- ========================= -->
+
+        <section class="investigation-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-icon">🧮</span>
+                    <div>
+                        <h2>Why This Risk Score?</h2>
+                        <p>
+                            Rule-based explanation of the factors associated with this event.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="riskExplanation" class="risk-explanation">
+
+                <div class="loading-card">
+                    Analyzing risk indicators...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Related IP Activity -->
+        <!-- ========================= -->
+
+        <section class="investigation-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-icon">🌐</span>
+                    <div>
+                        <h2>Related Source IP Activity</h2>
+                        <p>
+                            Other security records associated with the same source IP.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+
+                <table class="investigation-table">
+
+                    <thead>
+                        <tr>
+                            <th>Record</th>
+                            <th>Attack Type</th>
+                            <th>Target</th>
+                            <th>Destination IP</th>
+                            <th>Risk</th>
+                            <th>Severity</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="relatedActivityBody">
+
+                        <tr>
+                            <td colspan="6">
+                                Loading related activity...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Targeted Devices -->
+        <!-- ========================= -->
+
+        <section class="investigation-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-icon">💻</span>
+                    <div>
+                        <h2>Targeted Devices</h2>
+                        <p>
+                            Devices associated with activity from the investigated source.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="targetedDevices" class="targeted-devices">
+
+                <div class="loading-card">
+                    Loading targeted devices...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Investigation Timeline -->
+        <!-- ========================= -->
+
+        <section class="investigation-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-icon">🕐</span>
+                    <div>
+                        <h2>Related Event Sequence</h2>
+
+<p>
+    Related security records from the dataset. Sequence does not represent chronological time.
+</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="investigationTimeline" class="investigation-timeline">
+
+                <div class="loading-card">
+                    Building investigation timeline...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Analyst Response -->
+        <!-- ========================= -->
+
+        <section class="investigation-section response-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-icon">🛡️</span>
+                    <div>
+                        <h2>Analyst Response</h2>
+                        <p>
+                            Take action based on the investigation findings.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="response-actions">
+
+                <button id="createIncidentBtn" class="action-btn incident-btn">
+                    📂 Create Incident
+                </button>
+
+                <button id="isolateInvestigationDeviceBtn" class="action-btn isolate-btn">
+                    🔒 Isolate Device
+                </button>
+
+                <button id="closeInvestigationBtn" class="action-btn close-btn">
+                    ✓ Close Investigation
+                </button>
+
+            </div>
+
+            <div id="investigationActionStatus" class="action-status">
+                No analyst action has been taken yet.
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Footer -->
+        <!-- ========================= -->
+
+        <div class="investigation-footer">
+
+            <span>
+                🛡️ Sentinel X Security Investigation
+            </span>
+
+            <span>
+                CIC-IDS Security Dataset
+            </span>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

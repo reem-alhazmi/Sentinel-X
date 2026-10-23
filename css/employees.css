@@ -1,0 +1,654 @@
+/* ========================= */
+/* Employees Page */
+/* ========================= */
+
+.employees{
+    margin-top:50px;
+}
+
+.employees table{
+    width:100%;
+    border-collapse:collapse;
+    background:#1e293b;
+    border:1px solid #334155;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+.employees th{
+    background:#111827;
+    color:#38bdf8;
+    padding:16px;
+    text-align:left;
+    font-size:15px;
+    border-bottom:1px solid #334155;
+}
+
+.employees td{
+    padding:16px;
+    color:#e2e8f0;
+    border-bottom:1px solid #334155;
+    vertical-align:middle;
+}
+
+.employees tbody tr{
+    transition:.3s;
+}
+
+.employees tbody tr:hover{
+    background:#273549;
+}
+
+
+/* ========================= */
+/* Device Links */
+/* ========================= */
+
+.employees td a{
+    color:#38bdf8;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.employees td a:hover{
+    color:#7dd3fc;
+    text-decoration:underline;
+}
+
+
+/* ========================= */
+/* Employee Status */
+/* ========================= */
+
+.status-active{
+    color:#22c55e;
+    font-weight:bold;
+}
+
+.status-away{
+    color:#f59e0b;
+    font-weight:bold;
+}
+
+.status-offline{
+    color:#ef4444;
+    font-weight:bold;
+}
+
+
+/* ========================= */
+/* View Button */
+/* ========================= */
+
+.employees .view-btn{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:8px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.employees .view-btn:hover{
+    background:#3b82f6;
+    transform:scale(1.05);
+}
+
+
+/* ========================= */
+/* Employee Popup */
+/* ========================= */
+
+.employee-popup{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.75);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+    box-sizing:border-box;
+
+    z-index:9999;
+}
+
+
+/* ========================= */
+/* Popup Box */
+/* ========================= */
+
+.employee-popup-box{
+    width:650px;
+    max-width:95%;
+
+    max-height:90vh;
+    overflow-y:auto;
+
+    background:#0f172a;
+
+    border:1px solid #38bdf8;
+    border-radius:14px;
+
+    padding:25px;
+
+    box-shadow:
+        0 0 30px rgba(56,189,248,.25);
+
+    animation:employeePopupOpen .2s ease;
+}
+
+
+/* ========================= */
+/* Popup Animation */
+/* ========================= */
+
+@keyframes employeePopupOpen{
+
+    from{
+        opacity:0;
+        transform:scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+
+/* ========================= */
+/* Popup Header */
+/* ========================= */
+
+.employee-popup-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    border-bottom:1px solid #334155;
+
+    padding-bottom:15px;
+    margin-bottom:20px;
+}
+
+.employee-popup-header h2{
+    margin:0;
+    color:#38bdf8;
+}
+
+.employee-close-popup{
+    background:transparent;
+    border:none;
+
+    color:#94a3b8;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.employee-close-popup:hover{
+    color:#ef4444;
+    transform:scale(1.1);
+}
+
+
+/* ========================= */
+/* Employee Details */
+/* ========================= */
+
+.employee-details{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:15px;
+}
+
+.employee-detail-item{
+    background:#1e293b;
+
+    border:1px solid #334155;
+    border-radius:9px;
+
+    padding:14px;
+}
+
+.employee-detail-item strong{
+    display:block;
+
+    color:#94a3b8;
+
+    font-size:13px;
+
+    margin-bottom:6px;
+}
+
+.employee-detail-item span{
+    color:#f8fafc;
+
+    font-weight:bold;
+}
+
+
+/* ========================= */
+/* Security Activity */
+/* ========================= */
+
+.employee-security{
+    margin-top:25px;
+
+    padding-top:20px;
+
+    border-top:1px solid #334155;
+}
+
+.employee-security h3{
+    color:#38bdf8;
+
+    margin-top:0;
+    margin-bottom:15px;
+}
+
+
+/* ========================= */
+/* Security Activity Card */
+/* ========================= */
+
+.employee-activity{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    gap:15px;
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+    border-left:4px solid #38bdf8;
+
+    border-radius:9px;
+
+    padding:14px;
+
+    margin-bottom:10px;
+}
+
+.employee-activity-info{
+    display:flex;
+    flex-direction:column;
+
+    gap:5px;
+}
+
+.employee-activity-title{
+    color:#f8fafc;
+    font-weight:bold;
+}
+
+.employee-activity-meta{
+    color:#94a3b8;
+    font-size:13px;
+}
+
+
+/* ========================= */
+/* Security Activity Severity */
+/* ========================= */
+
+.employee-activity.high{
+    border-left-color:#ef4444;
+}
+
+.employee-activity.medium{
+    border-left-color:#f59e0b;
+}
+
+.employee-activity.low{
+    border-left-color:#22c55e;
+}
+
+.employee-activity.critical{
+    border-left-color:#dc2626;
+}
+
+
+/* ========================= */
+/* Activity Badge */
+/* ========================= */
+
+.employee-activity-badge{
+    padding:6px 10px;
+
+    border-radius:6px;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+}
+
+.employee-activity-badge.high,
+.employee-activity-badge.critical{
+    color:#f87171;
+
+    background:
+        rgba(239,68,68,.15);
+}
+
+.employee-activity-badge.medium{
+    color:#fbbf24;
+
+    background:
+        rgba(245,158,11,.15);
+}
+
+.employee-activity-badge.low{
+    color:#4ade80;
+
+    background:
+        rgba(34,197,94,.15);
+}
+
+
+/* ========================= */
+/* No Security Activity */
+/* ========================= */
+
+.no-employee-activity{
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+    border-radius:9px;
+
+    padding:18px;
+
+    color:#94a3b8;
+
+    text-align:center;
+}
+
+
+/* ========================= */
+/* Popup Actions */
+/* ========================= */
+
+.employee-popup-actions{
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:10px;
+
+    margin-top:25px;
+}
+
+
+/* ========================= */
+/* View Device Button */
+/* ========================= */
+
+.employee-device-btn{
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 16px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.employee-device-btn:hover{
+    background:#3b82f6;
+
+    transform:translateY(-2px);
+}
+
+
+/* ========================= */
+/* Close Button */
+/* ========================= */
+
+.employee-close-btn{
+    background:#334155;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 16px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.employee-close-btn:hover{
+    background:#475569;
+
+    transform:translateY(-2px);
+}
+
+
+/* ========================= */
+/* Responsive */
+/* ========================= */
+
+@media(max-width:800px){
+
+    .employees{
+        overflow-x:auto;
+    }
+
+    .employees table{
+        min-width:850px;
+    }
+
+    .employee-details{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+@media(max-width:500px){
+
+    .employee-popup-box{
+        padding:18px;
+    }
+
+    .employee-activity{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .employee-popup-actions{
+        flex-direction:column;
+    }
+
+    .employee-device-btn,
+    .employee-close-btn{
+        width:100%;
+    }
+
+}
+/* =========================================
+   SENTINEL X - DATASET EMPLOYEES
+   ========================================= */
+
+/* View Button */
+
+.dataset-employee-view {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.dataset-employee-view:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+
+/* =========================================
+   EMPLOYEE POPUP
+   ========================================= */
+
+.employee-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+
+/* Popup Box */
+
+.employee-popup-box {
+    width: 700px;
+    max-width: 90%;
+
+    background: #0f172a;
+
+    border: 1px solid #38bdf8;
+    border-radius: 14px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 0 30px rgba(56, 189, 248, 0.25);
+}
+
+
+/* Popup Header */
+
+.employee-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid #334155;
+
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.employee-popup-header h2 {
+    margin: 0;
+    color: #38bdf8;
+}
+
+
+/* Close Button */
+
+.dataset-close-employee-popup {
+    background: transparent;
+    border: none;
+
+    color: #94a3b8;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.dataset-close-employee-popup:hover {
+    color: #ef4444;
+}
+
+
+/* =========================================
+   EMPLOYEE DETAILS
+   ========================================= */
+
+.employee-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.employee-details div {
+    background: #1e293b;
+
+    padding: 13px;
+
+    border-radius: 8px;
+
+    border: 1px solid #334155;
+}
+
+.employee-details strong {
+    display: block;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+.employee-details span {
+    color: white;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 650px) {
+
+    .employee-details {
+        grid-template-columns: 1fr;
+    }
+
+}

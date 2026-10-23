@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sentinel X - Incidents</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/incidents.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <h2>🛡️ Sentinel X</h2>
+
+        <ul>
+
+            <ul>
+
+    <li>
+        <a href="index.html">🏠 Dashboard</a>
+    </li>
+
+    <li>
+        <a href="alerts.html">🚨 Alerts</a>
+    </li>
+
+    <li>
+        <a href="investigation.html">🔍 Investigation</a>
+    </li>
+
+    <li class="active">
+        <a href="incidents.html">📂 Incidents</a>
+    </li>
+
+    <li>
+        <a href="employees.html">👥 Employees</a>
+    </li>
+
+    <li>
+        <a href="devices.html">💻 Devices</a>
+    </li>
+
+    <li>
+        <a href="threat-hunting.html">🎯 Threat Hunting</a>
+    </li>
+
+    <li>
+        <a href="reports.html">📊 Reports</a>
+    </li>
+
+    <li>
+        <a href="settings.html">⚙️ Settings</a>
+    </li>
+
+</ul>
+
+        </ul>
+
+    </aside>
+
+
+    <!-- Main -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <div class="topbar">
+
+            <div class="topbar-left">
+
+                <h2>
+                    Incident Management
+                </h2>
+
+                <p>
+                    Security Incident Tracking
+
+                    <span class="online">
+                        🟢 Active
+                    </span>
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <span>
+                    📂 Incidents: 5
+                </span>
+
+                <span id="incidentsUserName">
+    👤 User
+</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Page Title -->
+        <h1>
+            📂 Security Incidents
+        </h1>
+
+
+        <!-- Incident Information -->
+        <div
+            id="incidentInfo"
+            class="incident-info"
+        >
+            🚨 Opened from Alert: -
+        </div>
+
+
+        <!-- Description -->
+        <p class="page-description">
+            View and manage all security incidents
+            detected inside Sentinel X.
+        </p>
+
+
+        <!-- Incidents Table -->
+        <section class="incidents">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Attack
+                        </th>
+
+                        <th>
+                            Alert
+                        </th>
+
+                        <th>
+                            Employee
+                        </th>
+
+                        <th>
+                            Device
+                        </th>
+
+                        <th>
+                            Severity
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <!-- ========================= -->
+                    <!-- INC-1001 -->
+                    <!-- ========================= -->
+
+                    <tr
+                        data-incident="INC-1001"
+                        data-alert="ALT-001"
+                        data-device="PC-094"
+                    >
+
+                        <td>
+                            INC-1001
+                        </td>
+
+                        <td>
+                            Brute Force
+                        </td>
+
+                        <td>
+
+                            <a href="alerts.html">
+                                ALT-001
+                            </a>
+
+                        </td>
+
+                        <td>
+                            External User
+                        </td>
+
+                        <td>
+
+                            <a href="devices.html">
+                                PC-094
+                            </a>
+
+                        </td>
+
+                        <td class="severity-high">
+                            HIGH
+                        </td>
+
+                        <td class="status-open">
+                            Open
+                        </td>
+
+                        <td>
+
+                            <button class="view-btn">
+                                View
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- ========================= -->
+                    <!-- INC-1002 -->
+                    <!-- ========================= -->
+
+                    <tr
+                        data-incident="INC-1002"
+                        data-alert="ALT-002"
+                        data-device="LAP-022"
+                    >
+
+                        <td>
+                            INC-1002
+                        </td>
+
+                        <td>
+                            Malware
+                        </td>
+
+                        <td>
+
+                            <a href="alerts.html">
+                                ALT-002
+                            </a>
+
+                        </td>
+
+                        <td>
+
+                            <a href="employees.html">
+                                EMP-204
+                            </a>
+
+                        </td>
+
+                        <td>
+
+                            <a href="devices.html">
+                                LAP-022
+                            </a>
+
+                        </td>
+
+                        <td class="severity-medium">
+                            MEDIUM
+                        </td>
+
+                        <td class="status-investigating">
+                            Investigating
+                        </td>
+
+                        <td>
+
+                            <button class="view-btn">
+                                View
+                            </button>
+
+                        </td>
+
+                    </tr>
+                                        <!-- ========================= -->
+                    <!-- INC-1003 -->
+                    <!-- ========================= -->
+
+                    <tr
+                        data-incident="INC-1003"
+                        data-alert="ALT-003"
+                        data-device="PC-011"
+                    >
+
+                        <td>
+                            INC-1003
+                        </td>
+
+                        <td>
+                            Phishing
+                        </td>
+
+                        <td>
+
+                            <a href="alerts.html">
+                                ALT-003
+                            </a>
+
+                        </td>
+
+                        <td>
+                            Reception
+                        </td>
+
+                        <td>
+
+                            <a href="devices.html">
+                                PC-011
+                            </a>
+
+                        </td>
+
+                        <td class="severity-low">
+                            LOW
+                        </td>
+
+                        <td class="status-closed">
+                            Closed
+                        </td>
+
+                        <td>
+
+                            <button class="view-btn">
+                                View
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- ========================= -->
+                    <!-- INC-1004 -->
+                    <!-- ========================= -->
+
+                    <tr
+                        data-incident="INC-1004"
+                        data-alert="ALT-004"
+                        data-device="SRV-003"
+                    >
+
+                        <td>
+                            INC-1004
+                        </td>
+
+                        <td>
+                            SQL Injection
+                        </td>
+
+                        <td>
+
+                            <a href="alerts.html">
+                                ALT-004
+                            </a>
+
+                        </td>
+
+                        <td>
+
+                            <a href="employees.html">
+                                Finance Team
+                            </a>
+
+                        </td>
+
+                        <td>
+
+                            <a href="devices.html">
+                                SRV-003
+                            </a>
+
+                        </td>
+
+                        <td class="severity-high">
+                            HIGH
+                        </td>
+
+                        <td class="status-open">
+                            Open
+                        </td>
+
+                        <td>
+
+                            <button class="view-btn">
+                                View
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- ========================= -->
+                    <!-- INC-1005 -->
+                    <!-- ========================= -->
+
+                    <tr
+                        data-incident="INC-1005"
+                        data-alert="ALT-005"
+                        data-device="LAP-015"
+                    >
+
+                        <td>
+                            INC-1005
+                        </td>
+
+                        <td>
+                            VPN Attack
+                        </td>
+
+                        <td>
+
+                            <a href="alerts.html">
+                                ALT-005
+                            </a>
+
+                        </td>
+
+                        <td>
+
+                            <a href="employees.html">
+                                EMP-015
+                            </a>
+
+                        </td>
+
+                        <td>
+
+                            <a href="devices.html">
+                                LAP-015
+                            </a>
+
+                        </td>
+
+                        <td class="severity-medium">
+                            MEDIUM
+                        </td>
+
+                        <td class="status-investigating">
+                            Investigating
+                        </td>
+
+                        <td>
+
+                            <button class="view-btn">
+                                View
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- Main Sentinel X JavaScript -->
+<!-- ========================= -->
+
+<script src="script.js"></script>
+
+
+<!-- ========================= -->
+<!-- Incident ↔ Alert ↔ Device -->
+<!-- Status Synchronization -->
+<!-- ========================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        // =====================================
+        // Get Saved Security Data
+        // =====================================
+
+        const blockedAlerts =
+            JSON.parse(
+                localStorage.getItem(
+                    "sentinelXBlockedAlerts"
+                ) || "[]"
+            );
+
+
+        const isolatedDevices =
+            JSON.parse(
+                localStorage.getItem(
+                    "sentinelXIsolatedDevices"
+                ) || "[]"
+            );
+
+
+        const containedIncidents =
+            JSON.parse(
+                localStorage.getItem(
+                    "sentinelXContainedIncidents"
+                ) || "[]"
+            );
+
+
+        // =====================================
+        // Find All Incident Rows
+        // =====================================
+
+        const incidentRows =
+            document.querySelectorAll(
+                ".incidents tbody tr"
+            );
+
+
+        // =====================================
+        // Synchronize Incident Status
+        // =====================================
+
+        incidentRows.forEach(
+            function (row) {
+
+
+                const incidentID =
+                    row.dataset.incident;
+
+
+                const alertID =
+                    row.dataset.alert;
+
+
+                const deviceID =
+                    row.dataset.device;
+
+
+                const statusCell =
+                    row.cells[6];
+
+
+                if (!statusCell) return;
+
+
+                // =================================
+                // Check If Alert Was Blocked
+                // =================================
+
+                const alertBlocked =
+                    blockedAlerts.includes(
+                        alertID
+                    );
+
+
+                // =================================
+                // Check If Device Was Isolated
+                // =================================
+
+                const deviceIsolated =
+                    isolatedDevices.includes(
+                        deviceID
+                    );
+
+
+                // =================================
+                // Check If Incident Was Contained
+                // =================================
+
+                const incidentContained =
+                    containedIncidents.includes(
+                        incidentID
+                    );
+
+
+                // =================================
+                // Isolated Has Highest Priority
+                // =================================
+
+                if (
+                    alertBlocked ||
+                    deviceIsolated
+                ) {
+
+
+                    statusCell.textContent =
+                        "🔒 Isolated";
+
+
+                    statusCell.className =
+                        "status-isolated";
+
+
+                    row.classList.add(
+                        "incident-isolated"
+                    );
+
+
+                    // Purple appearance
+                    row.style.background =
+                        "rgba(168, 85, 247, 0.10)";
+
+
+                    row.style.boxShadow =
+                        "inset 4px 0 0 #a855f7";
+
+
+                    statusCell.style.color =
+                        "#c084fc";
+
+
+                    statusCell.style.fontWeight =
+                        "700";
+
+
+                    statusCell.style.textShadow =
+                        "0 0 8px rgba(168,85,247,0.45)";
+
+
+                    return;
+
+                }
+
+
+                // =================================
+                // Contained Incident
+                // =================================
+
+                if (
+                    incidentContained
+                ) {
+
+                    statusCell.textContent =
+                        "Contained";
+
+
+                    statusCell.className =
+                        "status-investigating";
+
+
+                    return;
+
+                }
+
+            }
+        );
+                // =====================================
+        // Make View Buttons Read Current Status
+        // =====================================
+
+        incidentRows.forEach(
+            function (row) {
+
+
+                const viewButton =
+                    row.querySelector(
+                        ".view-btn"
+                    );
+
+
+                if (!viewButton) return;
+
+
+                viewButton.addEventListener(
+                    "click",
+                    function () {
+
+
+                        // =================================
+                        // Read Current Information
+                        // =================================
+
+                        const incidentID =
+                            row.cells[0]
+                                .textContent
+                                .trim();
+
+
+                        const attackType =
+                            row.cells[1]
+                                .textContent
+                                .trim();
+
+
+                        const alertID =
+                            row.cells[2]
+                                .textContent
+                                .trim();
+
+
+                        const employee =
+                            row.cells[3]
+                                .textContent
+                                .trim();
+
+
+                        const device =
+                            row.cells[4]
+                                .textContent
+                                .trim();
+
+
+                        const severity =
+                            row.cells[5]
+                                .textContent
+                                .trim();
+
+
+                        const status =
+                            row.cells[6]
+                                .textContent
+                                .trim();
+
+
+                        // =================================
+                        // Create Popup
+                        // =================================
+
+                        const popup =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        popup.className =
+                            "incident-popup";
+
+
+                        popup.innerHTML = `
+
+                            <div
+                                class="incident-popup-box"
+                            >
+
+                                <div
+                                    class="incident-popup-header"
+                                >
+
+                                    <h2>
+                                        🔎 Incident Details
+                                    </h2>
+
+                                    <button
+                                        class="close-popup"
+                                    >
+                                        ✖
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="incident-details"
+                                >
+
+                                    <div>
+
+                                        <strong>
+                                            Incident ID
+                                        </strong>
+
+                                        <span>
+                                            ${incidentID}
+                                        </span>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Attack Type
+                                        </strong>
+
+                                        <span>
+                                            ${attackType}
+                                        </span>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Alert ID
+                                        </strong>
+
+                                        <span>
+                                            ${alertID}
+                                        </span>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Employee
+                                        </strong>
+
+                                        <span>
+                                            ${employee}
+                                        </span>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Device
+                                        </strong>
+
+                                        <span>
+                                            ${device}
+                                        </span>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Severity
+                                        </strong>
+
+                                        <span>
+                                            ${severity}
+                                        </span>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <strong>
+                                            Status
+                                        </strong>
+
+                                        <span
+                                            ${
+                                                status === "🔒 Isolated"
+                                                ? 'style="color:#c084fc;font-weight:700;"'
+                                                : ''
+                                            }
+                                        >
+                                            ${status}
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div
+                                    class="incident-actions"
+                                >
+
+                                    <button
+                                        class="investigate-incident"
+                                    >
+                                        🔍 Investigate
+                                    </button>
+
+
+                                    <button
+                                        class="contain-incident"
+                                    >
+                                        🔒 Contain
+                                    </button>
+
+
+                                    <button
+                                        class="resolve-incident"
+                                    >
+                                        ✅ Resolve
+                                    </button>
+
+
+                                    <button
+                                        class="close-incident"
+                                    >
+                                        ❌ Close Incident
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        `;
+
+
+                        document.body.appendChild(
+                            popup
+                        );
+
+
+                        // =================================
+                        // Close X
+                        // =================================
+
+                        popup
+                            .querySelector(
+                                ".close-popup"
+                            )
+                            .addEventListener(
+                                "click",
+                                function () {
+
+                                    popup.remove();
+
+                                }
+                            );
+
+
+                        // =================================
+                        // Close Outside
+                        // =================================
+
+                        popup.addEventListener(
+                            "click",
+                            function (event) {
+
+                                if (
+                                    event.target ===
+                                    popup
+                                ) {
+
+                                    popup.remove();
+
+                                }
+
+                            }
+                        );
+
+
+                        // =================================
+                        // Investigate
+                        // =================================
+
+                        popup
+                            .querySelector(
+                                ".investigate-incident"
+                            )
+                            .addEventListener(
+                                "click",
+                                function () {
+
+                                    alert(
+                                        "🔍 Investigating Incident\n\n" +
+                                        "Incident: " +
+                                        incidentID +
+                                        "\n" +
+                                        "Attack: " +
+                                        attackType +
+                                        "\n" +
+                                        "Alert: " +
+                                        alertID +
+                                        "\n" +
+                                        "Device: " +
+                                        device
+                                    );
+
+                                }
+                            );
+                                                    // =================================
+                        // Contain
+                        // =================================
+
+                        popup
+                            .querySelector(
+                                ".contain-incident"
+                            )
+                            .addEventListener(
+                                "click",
+                                function () {
+
+
+                                    // Change status
+                                    row.cells[6]
+                                        .textContent =
+                                        "🔒 Isolated";
+
+
+                                    row.cells[6]
+                                        .className =
+                                        "status-isolated";
+
+
+                                    row.classList.add(
+                                        "incident-isolated"
+                                    );
+
+
+                                    row.style.background =
+                                        "rgba(168, 85, 247, 0.10)";
+
+
+                                    row.style.boxShadow =
+                                        "inset 4px 0 0 #a855f7";
+
+
+                                    // Save incident
+                                    if (
+                                        !containedIncidents.includes(
+                                            incidentID
+                                        )
+                                    ) {
+
+                                        containedIncidents.push(
+                                            incidentID
+                                        );
+
+                                    }
+
+
+                                    localStorage.setItem(
+                                        "sentinelXContainedIncidents",
+                                        JSON.stringify(
+                                            containedIncidents
+                                        )
+                                    );
+
+
+                                    // Save isolated device
+                                    if (
+                                        !isolatedDevices.includes(
+                                            device
+                                        )
+                                    ) {
+
+                                        isolatedDevices.push(
+                                            device
+                                        );
+
+                                    }
+
+
+                                    localStorage.setItem(
+                                        "sentinelXIsolatedDevices",
+                                        JSON.stringify(
+                                            isolatedDevices
+                                        )
+                                    );
+
+
+                                    alert(
+                                        "🔒 Incident Contained\n\n" +
+                                        "Incident: " +
+                                        incidentID +
+                                        "\n" +
+                                        "Device: " +
+                                        device +
+                                        "\n\n" +
+                                        "The device has been isolated successfully."
+                                    );
+
+
+                                    popup.remove();
+
+                                }
+                            );
+
+
+                        // =================================
+                        // Resolve
+                        // =================================
+
+                        popup
+                            .querySelector(
+                                ".resolve-incident"
+                            )
+                            .addEventListener(
+                                "click",
+                                function () {
+
+
+                                    row.cells[6]
+                                        .textContent =
+                                        "Resolved";
+
+
+                                    row.cells[6]
+                                        .className =
+                                        "status-closed";
+
+
+                                    alert(
+                                        "✅ Incident Resolved\n\n" +
+                                        incidentID +
+                                        " has been resolved successfully."
+                                    );
+
+
+                                    popup.remove();
+
+                                }
+                            );
+
+
+                        // =================================
+                        // Close Incident
+                        // =================================
+
+                        popup
+                            .querySelector(
+                                ".close-incident"
+                            )
+                            .addEventListener(
+                                "click",
+                                function () {
+
+
+                                    row.cells[6]
+                                        .textContent =
+                                        "Closed";
+
+
+                                    row.cells[6]
+                                        .className =
+                                        "status-closed";
+
+
+                                    alert(
+                                        "❌ Incident Closed\n\n" +
+                                        incidentID +
+                                        " has been closed."
+                                    );
+
+
+                                    popup.remove();
+
+                                }
+                            );
+
+
+                    }
+                );
+
+
+            }
+        );
+                // =====================================
+        // Highlight Incident From Alert
+        // =====================================
+
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const openedAlertID =
+            urlParams.get("alert");
+
+
+        if (openedAlertID) {
+
+            incidentRows.forEach(
+                function (row) {
+
+
+                    if (
+                        row.dataset.alert ===
+                        openedAlertID
+                    ) {
+
+
+                        row.style.background =
+                            "#263b5c";
+
+
+                        row.style.boxShadow =
+                            "inset 4px 0 0 #00bfff";
+
+
+                        row.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center"
+                        });
+
+
+                    }
+
+                }
+            );
+
+        }
+
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>

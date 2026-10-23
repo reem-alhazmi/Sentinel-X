@@ -1,0 +1,619 @@
+/* ========================= */ 
+/* Dashboard Only */ 
+/* ========================= */ 
+
+
+/* ========================= */ 
+/* Topbar Dashboard */ 
+/* ========================= */ 
+ 
+.topbar-right span{ 
+    display:inline-flex; 
+    align-items:center; 
+    gap:6px; 
+} 
+
+
+/* ========================= */
+/* Topbar Interactive Items */
+/* ========================= */
+
+#dashboardAlertCount{
+    cursor:pointer;
+    transition:.3s;
+}
+
+#dashboardAlertCount:hover{
+    color:#7dd3fc;
+    transform:translateY(-1px);
+}
+
+#adminBtn{
+    cursor:pointer;
+    transition:.3s;
+}
+
+#adminBtn:hover{
+    color:#7dd3fc;
+    transform:translateY(-1px);
+}
+
+
+/* ========================= */ 
+/* Simulate Attack Button */ 
+/* ========================= */ 
+ 
+#attackBtn{ 
+    background:#dc2626; 
+    color:white; 
+    border:none; 
+    padding:12px 24px; 
+    border-radius:10px; 
+    font-size:16px; 
+    font-weight:bold; 
+    cursor:pointer; 
+    margin-bottom:30px; 
+    transition:.3s; 
+} 
+ 
+#attackBtn:hover{ 
+    background:#ef4444; 
+    transform:scale(1.05); 
+    box-shadow:0 0 15px rgba(239,68,68,.4); 
+} 
+
+#attackBtn:active{
+    transform:scale(.98);
+}
+
+
+/* ========================= */ 
+/* Dashboard Cards */ 
+/* ========================= */ 
+ 
+.cards{ 
+    display:flex; 
+    gap:20px; 
+    flex-wrap:wrap; 
+} 
+ 
+.card{ 
+    width:260px; 
+    background:#1e293b; 
+    border:1px solid #334155; 
+    border-radius:12px; 
+    padding:25px; 
+    cursor:pointer; 
+    transition:.3s; 
+} 
+ 
+.card:hover{ 
+    transform:translateY(-5px); 
+    box-shadow:0 0 20px rgba(56,189,248,.3); 
+    border-color:#38bdf8;
+} 
+
+.card:active{
+    transform:translateY(-2px);
+}
+ 
+.card h3{ 
+    margin-bottom:15px; 
+    color:#cbd5e1; 
+} 
+ 
+.card p{ 
+    font-size:36px; 
+    font-weight:bold; 
+    color:#38bdf8; 
+} 
+
+
+/* ========================= */ 
+/* Risk Card */ 
+/* ========================= */ 
+ 
+#risk{ 
+    color:#22c55e; 
+} 
+ 
+#risk.risk-medium{ 
+    color:#f59e0b; 
+} 
+ 
+#risk.risk-high{ 
+    color:#ef4444; 
+} 
+ 
+#risk.risk-critical{ 
+    color:#dc2626; 
+} 
+
+
+/* ========================= */ 
+/* Recent Alerts */ 
+/* ========================= */ 
+ 
+.alerts{ 
+    margin-top:50px; 
+} 
+ 
+.alerts h2{ 
+    margin-bottom:20px; 
+    font-size:28px; 
+} 
+
+
+/* ========================= */ 
+/* Recent Alert Container */ 
+/* ========================= */ 
+ 
+#alertsContainer{ 
+    display:flex; 
+    flex-direction:column; 
+    gap:12px; 
+} 
+
+
+/* ========================= */ 
+/* Recent Alert Item */ 
+/* ========================= */ 
+ 
+.dashboard-alert{ 
+    display:flex; 
+    align-items:center; 
+    justify-content:space-between; 
+ 
+    gap:20px; 
+ 
+    background:#1e293b; 
+ 
+    border:1px solid #334155; 
+ 
+    border-left:4px solid #38bdf8; 
+ 
+    border-radius:10px; 
+ 
+    padding:16px 18px; 
+ 
+    transition:.3s; 
+} 
+ 
+.dashboard-alert:hover{ 
+    background:#273549; 
+ 
+    transform:translateX(4px); 
+ 
+    box-shadow:0 0 15px rgba(56,189,248,.15); 
+} 
+
+
+/* ========================= */ 
+/* Alert Information */ 
+/* ========================= */ 
+ 
+.dashboard-alert-info{ 
+    display:flex; 
+    align-items:center; 
+    gap:14px; 
+    flex:1; 
+} 
+ 
+.dashboard-alert-icon{ 
+    width:42px; 
+    height:42px; 
+ 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+ 
+    background:#0f172a; 
+ 
+    border:1px solid #334155; 
+ 
+    border-radius:10px; 
+ 
+    font-size:20px; 
+} 
+ 
+.dashboard-alert-text{ 
+    display:flex; 
+    flex-direction:column; 
+    gap:4px; 
+} 
+ 
+.dashboard-alert-title{ 
+    color:#f8fafc; 
+    font-weight:bold; 
+    font-size:15px; 
+} 
+ 
+.dashboard-alert-meta{ 
+    color:#94a3b8; 
+    font-size:13px; 
+} 
+
+
+/* ========================= */ 
+/* Dashboard Alert Severity */ 
+/* ========================= */ 
+ 
+.dashboard-alert.severity-critical{ 
+    border-left-color:#dc2626; 
+} 
+ 
+.dashboard-alert.severity-high{ 
+    border-left-color:#ef4444; 
+} 
+ 
+.dashboard-alert.severity-medium{ 
+    border-left-color:#f59e0b; 
+} 
+ 
+.dashboard-alert.severity-low{ 
+    border-left-color:#22c55e; 
+} 
+
+
+/* ========================= */ 
+/* Severity Badge */ 
+/* ========================= */ 
+ 
+.dashboard-severity{ 
+    padding:6px 10px; 
+ 
+    border-radius:6px; 
+ 
+    font-size:11px; 
+ 
+    font-weight:bold; 
+ 
+    white-space:nowrap; 
+} 
+ 
+.dashboard-severity.critical{ 
+    background:rgba(220,38,38,.15); 
+    color:#f87171; 
+} 
+ 
+.dashboard-severity.high{ 
+    background:rgba(239,68,68,.15); 
+    color:#f87171; 
+} 
+ 
+.dashboard-severity.medium{ 
+    background:rgba(245,158,11,.15); 
+    color:#fbbf24; 
+} 
+ 
+.dashboard-severity.low{ 
+    background:rgba(34,197,94,.15); 
+    color:#4ade80; 
+} 
+
+
+/* ========================= */ 
+/* Alert Link */ 
+/* ========================= */ 
+ 
+.dashboard-alert-link{ 
+    text-decoration:none; 
+    color:inherit; 
+    display:block; 
+    cursor:pointer;
+} 
+ 
+.dashboard-alert-link:hover{ 
+    text-decoration:none; 
+} 
+
+
+/* ========================= */ 
+/* Blocked Alert */ 
+/* ========================= */ 
+ 
+.dashboard-alert.alert-blocked{ 
+    opacity:.6; 
+ 
+    border-left-color:#ef4444; 
+ 
+    background:rgba(239,68,68,.07); 
+} 
+ 
+.dashboard-alert.alert-blocked .dashboard-alert-title{ 
+    text-decoration:line-through; 
+} 
+
+
+/* ========================= */ 
+/* Empty Alerts */ 
+/* ========================= */ 
+ 
+.no-dashboard-alerts{ 
+    background:#1e293b; 
+ 
+    border:1px solid #334155; 
+ 
+    border-radius:10px; 
+ 
+    padding:25px; 
+ 
+    text-align:center; 
+ 
+    color:#94a3b8; 
+ 
+    font-size:15px; 
+} 
+
+
+/* ========================= */ 
+/* Dashboard Popup */ 
+/* ========================= */
+
+.dashboard-popup{
+    cursor:default;
+}
+
+
+/* ========================= */ 
+/* Responsive */ 
+/* ========================= */ 
+ 
+@media(max-width:800px){ 
+ 
+    .cards{ 
+        flex-direction:column; 
+    } 
+ 
+    .card{ 
+        width:100%; 
+        box-sizing:border-box; 
+    } 
+ 
+    .dashboard-alert{ 
+        align-items:flex-start; 
+        flex-direction:column; 
+    } 
+ 
+    .dashboard-severity{ 
+        align-self:flex-start; 
+    } 
+ 
+} 
+ 
+ 
+@media(max-width:500px){ 
+ 
+    .dashboard-alert-info{ 
+        align-items:flex-start; 
+    } 
+ 
+    .dashboard-alert-icon{ 
+        flex-shrink:0; 
+    } 
+ 
+}
+/* ========================= */
+/* Dashboard Popup Overlay */
+/* ========================= */
+
+.dashboard-popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    cursor:default;
+}
+
+
+/* ========================= */
+/* Dashboard Popup Panel */
+/* ========================= */
+
+.dashboard-popup-panel{
+    width:420px;
+    max-width:90%;
+    max-height:85vh;
+    overflow-y:auto;
+    background:#0f172a;
+    border:1px solid #38bdf8;
+    border-radius:14px;
+    padding:25px;
+    box-shadow:0 0 30px rgba(56,189,248,.25);
+}
+
+
+/* ========================= */
+/* Dashboard Popup Header */
+/* ========================= */
+
+.dashboard-popup-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+    padding-bottom:15px;
+    border-bottom:1px solid #334155;
+}
+
+.dashboard-popup-header h2{
+    margin:0;
+    color:#38bdf8;
+}
+
+
+/* ========================= */
+/* Dashboard Popup Close */
+/* ========================= */
+
+.dashboard-popup-close{
+    background:transparent;
+    border:none;
+    color:#94a3b8;
+    font-size:20px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.dashboard-popup-close:hover{
+    color:#f8fafc;
+}
+
+
+/* ========================= */
+/* Profile Details */
+/* ========================= */
+
+.profile-detail{
+    background:#1e293b;
+    border:1px solid #334155;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:10px;
+}
+
+.profile-detail strong{
+    color:#94a3b8;
+}
+
+.profile-detail > div{
+    color:#f8fafc;
+    margin-top:5px;
+}
+
+.profile-detail .profile-access-level,
+.profile-detail .profile-session-status{
+    color:#22c55e;
+}
+
+
+/* ========================= */
+/* Profile Logout */
+/* ========================= */
+
+.profile-logout-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#ef4444;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.profile-logout-btn:hover{
+    background:#dc2626;
+}
+
+
+/* ========================= */
+/* Information Popup */
+/* ========================= */
+
+.info-popup-panel{
+    width:520px;
+}
+
+#infoPopupContent{
+    color:#cbd5e1;
+    line-height:1.7;
+}
+
+#infoPopupContent p{
+    margin:0 0 15px;
+}
+
+
+/* ========================= */
+/* Popup Information Item */
+/* ========================= */
+
+.dashboard-popup-item{
+    background:#1e293b;
+    border:1px solid #334155;
+    border-radius:10px;
+    padding:14px;
+    margin:10px 0;
+    color:#cbd5e1;
+}
+
+.dashboard-popup-item strong{
+    color:#f8fafc;
+}
+
+.dashboard-popup-meta{
+    color:#94a3b8;
+    font-size:13px;
+}
+
+
+/* ========================= */
+/* Popup Links */
+/* ========================= */
+
+.dashboard-popup-action{
+    margin-top:20px;
+}
+
+.dashboard-popup-link{
+    color:#38bdf8;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.dashboard-popup-link:hover{
+    color:#7dd3fc;
+}
+
+
+/* ========================= */
+/* Popup Risk Value */
+/* ========================= */
+
+.dashboard-risk-value{
+    color:#ef4444;
+}
+
+
+/* ========================= */
+/* Dashboard Topbar Controls */
+/* ========================= */
+
+#dashboardAlertCount{
+    text-decoration:none;
+    color:inherit;
+}
+
+#adminBtn{
+    background:transparent;
+    border:none;
+    color:inherit;
+    font:inherit;
+}
+
+
+/* ========================= */
+/* Popup Responsive */
+/* ========================= */
+
+@media(max-width:500px){
+
+    .dashboard-popup-panel{
+        width:auto;
+        max-width:none;
+        margin:15px;
+        padding:20px;
+    }
+
+    .dashboard-popup-header{
+        align-items:flex-start;
+    }
+
+}

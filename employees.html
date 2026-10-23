@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sentinel X - Employees</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/employees.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <h2>🛡️ Sentinel X</h2>
+
+        <ul>
+
+    <li>
+        <a href="index.html">🏠 Dashboard</a>
+    </li>
+
+    <li>
+        <a href="alerts.html">🚨 Alerts</a>
+    </li>
+
+    <li>
+        <a href="investigation.html">🔍 Investigation</a>
+    </li>
+
+    <li>
+        <a href="incidents.html">📂 Incidents</a>
+    </li>
+
+    <li class="active">
+        <a href="employees.html">👥 Employees</a>
+    </li>
+
+    <li>
+        <a href="devices.html">💻 Devices</a>
+    </li>
+
+    <li>
+        <a href="threat-hunting.html">🎯 Threat Hunting</a>
+    </li>
+
+    <li>
+        <a href="reports.html">📊 Reports</a>
+    </li>
+
+    <li>
+        <a href="settings.html">⚙️ Settings</a>
+    </li>
+
+</ul>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <div class="topbar-left">
+
+                <h2>Employee Management</h2>
+
+                <p>
+                    Organization Users
+                    <span class="online">🟢 Active</span>
+                </p>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <span>👥 Employees: 5</span>
+
+                <span id="employeesUserName">👤 User</span>
+
+            </div>
+
+        </div>
+
+        <h1>👥 Employees</h1>
+
+        <p class="page-description">
+            Monitor employees and review their security activities.
+        </p>
+
+        <section class="employees">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Assigned Device</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>EMP-001</td>
+
+                        <td>Reem Al-Hazmi</td>
+
+                        <td>Security Operations</td>
+
+                        <td>
+                            <a href="devices.html">LAP-001</a>
+                        </td>
+
+                        <td>SOC Analyst</td>
+
+                        <td class="status-active">Active</td>
+
+                        <td>
+                            <button class="view-btn">View</button>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP-002</td>
+
+                        <td>Alex Brown</td>
+
+                        <td>IT Support</td>
+
+                        <td>
+                            <a href="devices.html">PC-014</a>
+                        </td>
+
+                        <td>Administrator</td>
+
+                        <td class="status-active">Active</td>
+
+                        <td>
+                            <button class="view-btn">View</button>
+                        </td>
+
+                    </tr>
+                                        <tr>
+
+                        <td>EMP-003</td>
+
+                        <td>Sarah Smith</td>
+
+                        <td>Finance</td>
+
+                        <td>
+                            <a href="devices.html">LAP-022</a>
+                        </td>
+
+                        <td>Accountant</td>
+
+                        <td class="status-away">Away</td>
+
+                        <td>
+                            <button class="view-btn">View</button>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP-004</td>
+
+                        <td>David Wilson</td>
+
+                        <td>Human Resources</td>
+
+                        <td>
+                            <a href="devices.html">PC-031</a>
+                        </td>
+
+                        <td>HR Manager</td>
+
+                        <td class="status-active">Active</td>
+
+                        <td>
+                            <button class="view-btn">View</button>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>EMP-005</td>
+
+                        <td>Emma Taylor</td>
+
+                        <td>Network Team</td>
+
+                        <td>
+                            <a href="devices.html">LAP-015</a>
+                        </td>
+
+                        <td>Network Engineer</td>
+
+                        <td class="status-offline">Offline</td>
+
+                        <td>
+                            <button class="view-btn">View</button>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
